@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "development-73311": {
+      "hosting": {
+        "cart": [
+          "development-73311"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "development-73311"
+  }
+}
