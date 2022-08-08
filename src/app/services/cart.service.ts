@@ -31,15 +31,19 @@ export class CartService {
 
   }
 
-  public addItemToCart(): void {
+  public addItemToCart( item: {} ): void {
+
+  }
+  public addMultipeItemsToCart( items: [] ): void {
 
   }
 
-  public removeItemFromCart(): void {
+  public removeItemFromCart( item: {} ): void {
+
+  }
+  public removeMultipleItemsFromCart( items: [] ): void {
 
   }
 
-  public addMultipeItemsToCart(): void {
 
-  }
 }
