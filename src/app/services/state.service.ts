@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class StateService {
-  private currState = new BehaviorSubject<State | null>(null);
+  private currState = new BehaviorSubject<State | null | any>(null);
   public currState$ = this.currState.asObservable();
   constructor() {
     this.initState();
@@ -15,7 +15,7 @@ export class StateService {
   /* TYPE handle type when ambiguous */
 
   private initState(): State {
-    const s = this.currState.value;
+    // const s = this.currState.value;
     const init: State = {
       state: {
         userInfo: {
@@ -49,34 +49,23 @@ export class StateService {
     this.currState.next(init);
     return this.currState.value ? this.currState.value : {};
   }
-  public setState(name: string, newState: any): void {
+  public setState(category: string, newState: any): void {
+    if (!category || !newState) return;
+
     const currState = this.currState.value;
-    /* FIND cart and append */
-    const addState =
-      currState?.state && currState?.state.cart
-        ? (currState.state.cart = newState)
-        : [];
-    //  const nextState = [...currState, newState];
-    console.log({ addState });
-    // this.currState.next( { name, nextState } ); // find name of state (this is the change or appending)
-    console.log(this.currState.value);
+    console.log({ currState });
+
+    /* APPEND State ie, cart, orders, etc... */
+    console.log(
+      'currState.state[category]',
+      { category },
+      currState.state[category]
+    );
+    /* Update category value */
+    currState.state[category] = newState;
+    const nextState = currState;
+
+    this.currState.next(nextState);
+    console.log('currState.value', this.currState.value);
   }
 }
-
-/* function stest() {
-  const stateObj = {
-    state: {
-      userInfo: [],
-      cart: [],
-      orders: [],
-      templates: [],
-      addressBook: [],
-      deliveryTrackingSettings: [],
-      notificationSettings: {},
-      eagleView: [],
-      quotes: [],
-      rebates: [],
-      menu: []
-    }
-  }
-} */

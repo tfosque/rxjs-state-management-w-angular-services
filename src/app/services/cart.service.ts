@@ -36,11 +36,15 @@ export class CartService {
     ]);
     httpResponse.pipe(shareReplay(1)).subscribe((items) => {
       this.cartItems.next(items);
-      this.updateState('cart', {
+      const nextCart = {
         cartItems: this.cartItems.value,
         summary: this.summary.value,
         selectedItems: this.selectedCartItems.value,
-      });
+      };
+      // async api Crud operation
+      this.updateState('cart', nextCart);
+      this.updateState('orders', nextCart);
+      this.updateState('eagleView', nextCart);
     });
     // console.log('this:cartItems:', this.cartItems.value);
   }
@@ -58,7 +62,7 @@ export class CartService {
   public addMultipleSelectedItems(items: CartItem[]): void {}
 
   /* STATE */
-  private updateState(itemToUpdate: string, addState: any) {
-    this.state.setState(itemToUpdate, addState);
+  private updateState(category: string, state: any) {
+    this.state.setState(category, state);
   }
 }
