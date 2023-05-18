@@ -1,4 +1,4 @@
-<p>home works!</p>
+<!-- <p>home works!</p> -->
 
 <div class="container-fluid">
 
@@ -13,11 +13,17 @@
     <div class="col-auto">
       <label for="">MFG: </label>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{mfgSelLabel || 'Dropdown'}}
+        <button style="width: 270px" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {{mfgSelLabel || 'Select MFG'}}
         </button>
         <ul class="dropdown-menu">
-          <li *ngFor="let item of mfgs"><a class="dropdown-item" (click)="setSkuDisplay(item)">{{item[0]}}</a></li>
+          <li *ngFor="let item of mfgs">
+            <a *ngIf="true" class="dropdown-item" (click)="setSkuDisplay(item)">{{item[0]}}</a>
+            <a *ngIf="false" class="dropdown-item" (click)="setSkuDisplay(item)" style="background-color: #ea920e;">
+              {{item[0]}}
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -26,8 +32,9 @@
     <div class="col-auto">
       <label for="">Color: </label>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{colSelLabel || 'Dropdown'}}
+        <button style="width: 270px" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {{colSelLabel || 'Select Color'}}
         </button>
         <ul class="dropdown-menu">
           <li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
@@ -41,25 +48,24 @@
   <!-- skuDisplays -->
   <div class="row mt-3">
     <div class="col-md-12">
-      <div class="alert alert-primary" role="alert">
+      <div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
         <!-- Mfg Skus -->
-        <div> <b>Selected MFG Skus:</b>
-          <div style="color: #6b5b3f">{{ mfgSelection[0] }}</div>
+        <h4> <b>Selected MFG Skus:</b>
+          <div>{{ mfgSelection[0] }}</div>
           <p *ngFor="let item of skuDisplay" style="display: inline; padding: 4px 4px;">
-            <span *ngIf="!checkMatch(item)"> {{item}} |</span>
-            <mark *ngIf="checkMatch(item)">{{item}} |</mark>
-
+            <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
+            <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
           </p>
-        </div>
+        </h4>
         <hr>
         <!-- Color Skus -->
-        <div> <b>Selected COLOR Skus:</b>
+        <h4> <b>Selected COLOR Skus:</b>
           <div style="color: #6b5b3f">{{ colorSelection[0] }}</div>
           <p *ngFor="let item of skuDisplayColor">
-            <span *ngIf="!checkMatch(item)"> {{item}} |</span>
-            <mark *ngIf="checkMatch(item)">{{item}} |</mark>
+            <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
+            <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
           </p>
-        </div>
+        </h4>
       </div>
     </div>
   </div>
