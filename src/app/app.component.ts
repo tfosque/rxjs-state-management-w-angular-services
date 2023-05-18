@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-@Component({
+@Component( {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
-})
-export class AppComponent {
+} )
+export class AppComponent implements OnInit {
   title = 'cart';
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log( 'app.....' )
+  }
+
 }
+
+

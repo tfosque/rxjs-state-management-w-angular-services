@@ -1,1 +1,66 @@
 <p>home works!</p>
+
+<div class="container-fluid">
+
+  <!-- MFG -->
+  <section class="row">
+
+    <!-- IMG -->
+    <div class="col-md-1">
+      <img src="" alt="" width="80" height="80">
+    </div>
+
+    <div class="col-auto">
+      <label for="">MFG: </label>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{mfgSelLabel || 'Dropdown'}}
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let item of mfgs"><a class="dropdown-item" (click)="setSkuDisplay(item)">{{item[0]}}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COLOR -->
+    <div class="col-auto">
+      <label for="">Color: </label>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{colSelLabel || 'Dropdown'}}
+        </button>
+        <ul class="dropdown-menu">
+          <li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
+            <a class="dropdown-item" (click)="setSkuDisplayColor(item)">{{item[0]}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- skuDisplays -->
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div class="alert alert-primary" role="alert">
+        <!-- Mfg Skus -->
+        <div> <b>Selected MFG Skus:</b>
+          <div style="color: #6b5b3f">{{ mfgSelection[0] }}</div>
+          <p *ngFor="let item of skuDisplay" style="display: inline; padding: 4px 4px;">
+            <span *ngIf="!checkMatch(item)"> {{item}} |</span>
+            <mark *ngIf="checkMatch(item)">{{item}} |</mark>
+
+          </p>
+        </div>
+        <hr>
+        <!-- Color Skus -->
+        <div> <b>Selected COLOR Skus:</b>
+          <div style="color: #6b5b3f">{{ colorSelection[0] }}</div>
+          <p *ngFor="let item of skuDisplayColor">
+            <span *ngIf="!checkMatch(item)"> {{item}} |</span>
+            <mark *ngIf="checkMatch(item)">{{item}} |</mark>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
