@@ -34,7 +34,7 @@
       <div class="dropdown">
         <button style="width: 270px" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          {{colSelLabel || colors[0][0]}}
+          {{colSelLabel || colors[0][0] }}
         </button>
         <ul class="dropdown-menu">
           <li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
@@ -50,22 +50,68 @@
     <div class="col-md-12">
       <div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
         <!-- Mfg Skus -->
-        <h4> <b>Selected MFG Skus:</b>
-          <div style="color: #6b5b3f">{{ mfgSelection[0] }}</div>
-          <p *ngFor="let item of selectedMFG" style="display: inline; padding: 4px 4px;">
+        <h4> Selected MFG Skus: <span style="color: #6b5b3f">{{ mfgSelection[0] }}</span>
+          <br>
+          <div *ngFor="let item of selectedMFG" style="display: inline; padding: 4px 4px;">
             <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
             <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
-          </p>
+          </div>
         </h4>
+
         <hr>
         <!-- Color Skus -->
-        <h4> <b>Selected COLOR Skus:</b>
+        <h4>
+          Selected COLOR Skus: <span style="color: #6b5b3f">{{ colorSelection[0] }}</span>
+          <div *ngFor="let item of skuDisplayColor">
+            <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
+            <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
+          </div>
+        </h4>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Show All Skus -->
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
+        <!-- Mfg Skus -->
+        <h4 class="mb-3"> <b>({{ allMatches.length }}) Matching MFG Skus: <span
+              style="color: #6b5b3f">{{ mfgSelection[0] }}</span></b>
+          <!--  <p *ngFor="let item of allMatches" style="display: inline; padding: 4px 4px;">
+            <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
+            <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
+          </p> -->
+        </h4>
+        <div *ngFor="let item of allMatches">
+          <h4 class="mb-1">
+            ({{ itemCnt | async }}) {{item[0]}}</h4>
+
+          <ng-container *ngFor="let sku of item[1]">
+            <button *ngIf="hasSku(sku, item[1])" class="btn btn-sm btn-outline-success"
+              style="margin: 2px 2px 4px 0px; min-width: 80px;">{{ sku }}
+              <div [style.background-color]="'#' + sku" style="border-radius: 6px; width: 80px; height: 80px">
+                &nbsp;
+              </div>
+            </button>
+            <!--   <div style="background-color: blue; width: 80px; height: 80px">
+              &nbsp;
+            </div> -->
+
+          </ng-container>
+          <hr>
+        </div>
+
+
+        <!-- Color Skus -->
+        <!-- <h4> <b>Selected COLOR Skus:</b>
           <div style="color: #6b5b3f">{{ colorSelection[0] }}</div>
           <p *ngFor="let item of skuDisplayColor">
             <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
             <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
           </p>
-        </h4>
+        </h4> -->
       </div>
     </div>
   </div>

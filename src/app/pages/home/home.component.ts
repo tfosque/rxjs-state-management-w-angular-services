@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VariationColors, VariationMfg } from '../../services/variations';
 // import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
+import { BehaviorSubject } from 'rxjs';
 
 /* TODO */
 // How do we get default or current sku selections
@@ -15,6 +16,7 @@ import * as _ from 'lodash';
 export class HomeComponent implements OnInit {
   mfgs: any = [];
   colors: any = [];
+  itemCnt = new BehaviorSubject<number>( 0 );
   /*  */
 
   objectMFG: any = VariationMfg;
@@ -32,13 +34,16 @@ export class HomeComponent implements OnInit {
 
   /*  */
   matches = [];
+  allMatches: any = [];
   /*  */
 
   selectedMFG: any = '';
   skuDisplayColor: any = '';
   /*  */
-  selectedSkuColor = '';
-  selectedSkuMfg = '';
+  selectedSkuColor: any = ['Acadia(750)', ['555291']];
+  selectedSkuMfg: any = ['A.B. Seam', ['22718']];
+  /*  */
+  // ['Acadia(750)', ['555291']]
 
   constructor() { }
 
@@ -50,17 +55,29 @@ export class HomeComponent implements OnInit {
     const objectColor = this.objectColor;
     console.log( { objectMFG } ); console.log( { objectColor } );
 
-    this.populateDefaultVariations();
+
+    this.initializeDropdowns();
     // this.handleColorChange();
   }
 
-  fetchProductBySku( sku: any ) {
-    // retrieve variations and variation types from a sku
+  /* Custom Methods */
+  initializeDropdowns() {
+    this.populateDefaultVariations();
+
+    const defaultSelections = ( { mfg: this.selectedSkuMfg, colors: this.selectedSkuColor } );
+
+    this.setSkuDisplayColor( defaultSelections.colors );
+    this.handleColorChange( defaultSelections.colors );
+
+    /* Display results  */
+    this.setSkuDisplayMFG( defaultSelections.mfg );
   }
   getAllMfg() {
     return Object.entries( this.objectMFG );
   }
-  getAllColors() {
+
+  getItemCnt() {
+    this.itemCnt.next( ( this.itemCnt.value ) + this.itemCnt.value + 1 );
   }
 
   sortList( objectArray: any ) {
@@ -71,12 +88,6 @@ export class HomeComponent implements OnInit {
     } );
     // console.log( { jsSort } );
     return jsSort;
-  }
-
-  onSelectMfg() { }
-  onSelectColor() { }
-
-  onSelectUpdateThumb() {
   }
 
   /*  _zip, unzip, pullAt, without, xor, compact _.includes */
@@ -91,6 +102,136 @@ export class HomeComponent implements OnInit {
     this.colors = this.sortList( COLORS );
   }
 
+  /* HANDLE COLOR CHANGE */
+  handleColorChange( selColor: any = { 'Acadia(750)': ['555291'] } ) {
+    this.itemCnt.next( 0 );
+
+    console.log( { selColor } )
+    // TODO default Sku is this important when no selection has been made?
+
+    const objectMFG = this.objectMFG;
+    const objectColor = this.objectColor;
+
+    // what does list1 and 2 look like side by side
+    // const list1Entries = Object.entries( objectMFG );
+    // const list2Entries = Object.entries( objectColor );
+    // console.log( { list1Entries } ); console.log( { list2Entries } );
+
+    /* SORT MFG */
+    this.mfgs = _.orderBy( Object.entries( objectMFG ) );
+
+    /* SORT COLORS */
+    this.colors = this.sortList( Object.entries( objectColor ) );
+    /*  */
+  }
+  getMatches() {
+    const getMatches: any = _.intersection( this.selectedMFG, this.skuDisplayColor );
+    this.matches = getMatches;
+    console.log( { getMatches } );
+    // console.log( 'skuDisplayMFG', this.selectedMFG );
+    // console.log( 'skuDisplayColor', this.skuDisplayColor );
+
+    return getMatches;
+  }
+
+  getAllMatches( color: any = ['Acadia(750)', ['555291']] ) {
+    // product 40775
+    console.log( { color } )
+
+    const objectColor = this.objectColor;
+    const objectMFG = this.objectMFG;
+
+    // default Sku is this important when no selection has been made?  
+
+    // what does list1 and 2 look like side by side
+    /* const list1 = Object.entries( objectMFG );
+    const list2 = Object.entries( objectColor );
+    console.log( { list1 } );
+    console.log( { list2 } );
+    //
+    const includes = list1.filter( f => {
+      console.log( 'includes:', _.includes( list2, f ) );
+      return _.includes( list2, f );
+    } )
+    console.log( { includes } ); */
+
+    // loop over each mfg
+    const entries = Object.entries( objectMFG )
+      .map( ( itemMfg: any ) => {
+        // console.log( { itemMfg } );
+
+        // console.log( 'm1', m[1], 'objColor:', cp )// objectColor['']
+
+        /* TODO */
+        const itemColor: any = objectColor[color[0]];
+        // console.log( 'm[0]', m[0] )
+        // console.log( { itemColor } );
+
+        return _.includes( itemMfg[1], itemColor[0] ) ? itemMfg : null;
+      } );
+    console.log( { entries } );
+    /* End of entries  */
+
+    const matchesCompare = _.compact( entries );
+    console.log( { matchesCompare } );
+    this.allMatches = matchesCompare;
+    // return ['no matches']
+  }
+
+  hasSku( sku: any, item: any ) {
+    console.group( 'hasSku' )
+    console.log( { sku } );
+    console.log( { item } );
+    console.log( 'eqs', _.includes( item, sku ) );
+    console.groupEnd();
+
+    const hasSku = _.includes( item, sku );
+
+    // hasSku(sku, item[1]) && item[1].map(m => m === sku)
+    const exactMatch = hasSku && item.map( ( m: any ) => {
+      if ( !m === sku ) return;
+      return sku
+    } );
+    console.log( 'exactMatch:', _.uniq( exactMatch ) )
+    return _.uniq( exactMatch );
+  }
+
+  setSkuDisplayMFG( ev: any ) {
+    // console.log( { ev } )
+    this.selectedMFG = ev[1];
+    this.mfgSelLabel = ev[0]
+    this.mfgSelection = ev;
+    this.mfgSelectionSkus = [];
+
+    this.getMatches();
+    this.getAllMatches();
+    return this.getMatches();
+  }
+
+  setSkuDisplayColor( ev: any ) {
+    console.log( { ev } )
+    this.skuDisplayColor = ev[1];
+    this.colSelLabel = ev[0]
+    this.colorSelection = ev;
+    this.colorSelectionSkus = []
+
+    this.getMatches();
+    this.getAllMatches();
+    this.getAllMatches();
+    return this.getMatches();
+  }
+
+  highlightMatch( item: any ) {
+    return _.includes( this.matches, item );
+  }
+
+  disableDropdownItem( item: any ) {
+    console.log( { item } )
+    // item[0]
+    return item;
+  }
+
+  /* DRAFT */
   handleColor( color: string = 'Ash(502)' ) {
     console.log( { color } )
     // default Sku is this important when no selection has been made?
@@ -139,66 +280,6 @@ export class HomeComponent implements OnInit {
     this.colors = this.sortList( Object.entries( objectColor ) )
 
     /*  */
-  }
-
-  /* HANDLE COLOR CHANGE */
-  handleColorChange( selColor: any = { 'Acadia(750)': ['555291'] } ) {
-    console.log( { selColor } )
-    // TODO default Sku is this important when no selection has been made?
-
-    const objectMFG = this.objectMFG;
-    const objectColor = this.objectColor;
-
-    // what does list1 and 2 look like side by side
-    const list1Entries = Object.entries( objectMFG );
-    const list2Entries = Object.entries( objectColor );
-    console.log( { list1Entries } ); console.log( { list2Entries } );
-
-    /* SORT MFG */
-    this.mfgs = _.orderBy( Object.entries( objectMFG ) );
-
-    /* SORT COLORS */
-    this.colors = this.sortList( Object.entries( objectColor ) );
-    /*  */
-  }
-  getMatches() {
-    const matches: any = _.intersection( this.selectedMFG, this.skuDisplayColor );
-    this.matches = matches;
-    console.log( { matches } );
-    console.log( 'skuDisplayMFG', this.selectedMFG );
-    console.log( 'skuDisplayColor', this.skuDisplayColor );
-
-    return matches;
-  }
-
-  setSkuDisplayMFG( ev: any ) {
-    // console.log( { ev } )
-    this.selectedMFG = ev[1];
-    this.mfgSelLabel = ev[0]
-    this.mfgSelection = ev;
-    this.mfgSelectionSkus = [];
-
-    this.getMatches();
-  }
-
-  setSkuDisplayColor( ev: any ) {
-    // console.log( ev )
-    this.skuDisplayColor = ev[1];
-    this.colSelLabel = ev[0]
-    this.colorSelection = ev;
-    this.colorSelectionSkus = []
-
-    this.getMatches();
-  }
-
-  highlightMatch( item: any ) {
-    return _.includes( this.matches, item );
-  }
-
-  disableDropdownItem( item: any ) {
-    console.log( { item } )
-    // item[0]
-    return item;
   }
 
 
