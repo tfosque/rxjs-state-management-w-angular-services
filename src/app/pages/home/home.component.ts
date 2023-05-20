@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   /*  */
   mfgSelLabel: any = '';
   colSelLabel: any = '';
+  showTiles = new BehaviorSubject<boolean>( false );
   /*  */
 
   mfgSelection = '';
@@ -229,6 +230,10 @@ export class HomeComponent implements OnInit {
     console.log( { item } )
     // item[0]
     return item;
+  }
+
+  toggleShowTiles() {
+    this.showTiles.next( !this.showTiles.value )
   }
 
   /* DRAFT */

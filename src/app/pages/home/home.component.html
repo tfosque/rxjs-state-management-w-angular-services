@@ -78,7 +78,8 @@
       <div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
         <!-- Mfg Skus -->
         <h4 class="mb-3"> <b>({{ allMatches.length }}) Matching MFG Skus: <span
-              style="color: #6b5b3f">{{ mfgSelection[0] }}</span></b>
+              style="color: #6b5b3f">{{ mfgSelection[0] }}</span></b> <input type="checkbox"
+            *ngIf="false; else checkbox">
           <!--  <p *ngFor="let item of allMatches" style="display: inline; padding: 4px 4px;">
             <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
             <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
@@ -91,7 +92,8 @@
           <ng-container *ngFor="let sku of item[1]">
             <button *ngIf="hasSku(sku, item[1])" class="btn btn-sm btn-outline-success"
               style="margin: 2px 2px 4px 0px; min-width: 80px;">{{ sku }}
-              <div [style.background-color]="'#' + sku" style="border-radius: 6px; width: 80px; height: 80px">
+              <div *ngIf="showTiles | async" [style.background-color]="'#' + sku"
+                style="border-radius: 6px; width: 80px; height: 80px">
                 &nbsp;
               </div>
             </button>
@@ -116,3 +118,14 @@
     </div>
   </div>
 </div>
+
+
+<!-- TEMPLATES -->
+<ng-template #checkbox>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="toggleShowTiles()">
+    <label class="form-check-label" for="flexCheckChecked">
+      Show tiles
+    </label>
+  </div>
+</ng-template>
