@@ -135,6 +135,7 @@ export class HomeComponent implements OnInit {
     return getMatches;
   }
 
+  // get MFG matches to a selected Color
   getAllMatches( color: any = ['Acadia(750)', ['555291']] ) {
     // product 40775
     console.log( { color } )
@@ -175,16 +176,37 @@ export class HomeComponent implements OnInit {
 
     const matchesCompare = _.compact( entries );
     console.log( { matchesCompare } );
+
+    /*  */
     this.allMatches = matchesCompare;
     // return ['no matches']
   }
 
+  getSelectedMFGMatches() {
+    const matchesCompare: any[] = [];
+
+    /*  */
+    const rebuildMFGDropdown = this.mfgs.map( ( itemMfg: any ) => {
+      return matchesCompare.map( itemCompare => {
+        if ( itemCompare[0] === itemMfg[0] ) {
+          console.group( 'EQUAL' )
+          console.log( 'xxx: compare', { itemCompare } )
+          console.log( 'xxx: mfg', { itemMfg } );
+          console.groupEnd();
+          return itemMfg;
+        }
+      } )
+      // return itemMfg
+    } );
+    console.log( { rebuildMFGDropdown } );
+  }
+
   hasSku( sku: any, item: any ) {
-    console.group( 'hasSku' )
+    /* console.group( 'hasSku' )
     console.log( { sku } );
     console.log( { item } );
     console.log( 'eqs', _.includes( item, sku ) );
-    console.groupEnd();
+    console.groupEnd(); */
 
     const hasSku = _.includes( item, sku );
 
@@ -193,15 +215,18 @@ export class HomeComponent implements OnInit {
       if ( !m === sku ) return;
       return sku
     } );
-    console.log( 'exactMatch:', _.uniq( exactMatch ) )
+    // console.log( 'exactMatch:', _.uniq( exactMatch ) )
     return _.uniq( exactMatch );
   }
 
-  setSkuDisplayMFG( ev: any ) {
-    // console.log( { ev } )
-    this.selectedMFG = ev[1];
-    this.mfgSelLabel = ev[0]
-    this.mfgSelection = ev;
+  displaySelectedSku() {
+    return this.mfgSelection[1].length < 2 ? this.mfgSelection[1] : this.mfgSelection[1][0];
+  }
+  setSkuDisplayMFG( selection: any ) {
+    // console.log( { selection } )
+    this.selectedMFG = selection[1];
+    this.mfgSelLabel = selection[0]
+    this.mfgSelection = selection; console.log( 'mfgSelection:', this.mfgSelection )
     this.mfgSelectionSkus = [];
 
     this.getMatches();
@@ -209,16 +234,15 @@ export class HomeComponent implements OnInit {
     return this.getMatches();
   }
 
-  setSkuDisplayColor( ev: any ) {
-    console.log( { ev } )
-    this.skuDisplayColor = ev[1];
-    this.colSelLabel = ev[0]
-    this.colorSelection = ev;
+  setSkuDisplayColor( selection: any ) {
+    console.log( { selection } )
+    this.skuDisplayColor = selection[1];
+    this.colSelLabel = selection[0]
+    this.colorSelection = selection;
     this.colorSelectionSkus = []
 
     this.getMatches();
-    this.getAllMatches();
-    this.getAllMatches();
+    this.getAllMatches( selection );
     return this.getMatches();
   }
 
