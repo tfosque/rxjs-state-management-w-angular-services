@@ -3,6 +3,7 @@ import { VariationColors, VariationMfg } from '../../services/variations';
 // import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs';
+import { currSkuData_407754 } from './currentSkuData';
 
 /* TODO */
 // How do we get default or current sku selections
@@ -14,6 +15,8 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./home.component.scss']
 } )
 export class HomeComponent implements OnInit {
+  currentSkuData = currSkuData_407754;
+  /*  */
   mfgs: any = [];
   colors: any = [];
   itemCnt = new BehaviorSubject<number>( 0 );
@@ -43,9 +46,6 @@ export class HomeComponent implements OnInit {
   /*  */
   selectedSkuColor: any = ['Acadia(750)', ['555291']];
   selectedSkuMfg: any = ['A.B. Seam', ['22718']];
-  /*  */
-  // ['Acadia(750)', ['555291']]
-
   constructor() { }
 
   ngOnInit(): void {
@@ -56,9 +56,7 @@ export class HomeComponent implements OnInit {
     const objectColor = this.objectColor;
     console.log( { objectMFG } ); console.log( { objectColor } );
 
-
     this.initializeDropdowns();
-    // this.handleColorChange();
   }
 
   /* Custom Methods */
@@ -112,11 +110,6 @@ export class HomeComponent implements OnInit {
 
     const objectMFG = this.objectMFG;
     const objectColor = this.objectColor;
-
-    // what does list1 and 2 look like side by side
-    // const list1Entries = Object.entries( objectMFG );
-    // const list2Entries = Object.entries( objectColor );
-    // console.log( { list1Entries } ); console.log( { list2Entries } );
 
     /* SORT MFG */
     this.mfgs = _.orderBy( Object.entries( objectMFG ) );
@@ -179,7 +172,12 @@ export class HomeComponent implements OnInit {
 
     /*  */
     this.allMatches = matchesCompare;
+    console.log( 'this.matches:', this.matches )
     // return ['no matches']
+  }
+
+  updateDropdownAfterSelection() {
+
   }
 
   getSelectedMFGMatches() {
@@ -247,6 +245,8 @@ export class HomeComponent implements OnInit {
   }
 
   highlightMatch( item: any ) {
+    console.log( 'xxxxxx:', _.includes( this.matches, item ) );
+
     return _.includes( this.matches, item );
   }
 

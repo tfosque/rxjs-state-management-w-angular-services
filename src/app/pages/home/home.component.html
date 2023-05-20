@@ -95,16 +95,17 @@
 
           <ng-container *ngFor="let sku of item[1]">
             <button *ngIf="hasSku(sku, item[1])" class="btn btn-sm btn-outline-dark"
-              style="margin: 2px 2px 4px 0px; min-width: 80px;">
-              {{ sku }}<br>
+              style="margin: 2px 4px 4px 0px; min-width: 80px;">
+              <!--  <span *ngIf="!highlightMatch(sku)"> {{sku}} |</span>
+              <mark *ngIf="highlightMatch(sku)">{{sku}} |</mark> -->
+              {{sku}}
+              <br>
 
               <img *ngIf="showTiles | async" style="border-radius: 6px; width: 60px; height: 60px"
                 [src]="'https://static.becn.com/insecure/plain/images/large/' + sku + '_default_small.jpg'"
                 class="img-rounded" [alt]="sku">
             </button>
-            <!--   <div style="background-color: blue; width: 80px; height: 80px">
-              &nbsp;
-            </div> -->
+
 
           </ng-container>
           <hr>
