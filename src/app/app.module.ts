@@ -12,6 +12,12 @@ import { LoginComponent } from './pages/login/login.component';
 /* MATERIAL MODULES */
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule( {
   declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent],
   imports: [
@@ -20,7 +26,13 @@ import { MatSelectModule } from '@angular/material/select';
     BrowserAnimationsModule,
     MenuModule,
     MatSliderModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatTableModule,
+    MatIconModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],

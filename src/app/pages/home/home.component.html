@@ -1,63 +1,6 @@
 <!-- <p>home works!</p> -->
 
-<div class="container-fluid" style="border: solid thin #e3e3e3; padding: 9px 9px">
-
-  <!-- MFG -->
-  <section class="row">
-
-    <!-- IMG -->
-    <div class="col-md-1" style="text-align: center">
-      <!--  <img src="" alt="" width="80" height="80"> -->
-      <span>{{ mfgSelection[1][0]  }}</span>
-      <img style="border-radius: 6px; width: 80px; height: 80px"
-        [src]="'https://static.becn.com/insecure/plain/images/large/' + displaySelectedSku() + '_default_small.jpg'"
-        class="img-rounded" [alt]="mfgSelection[0]">
-    </div>
-
-    <div class="col-auto">
-      <label for="">MFG: </label>
-      <div class="dropdown">
-        <button style="width: 270px" class="btn btn-outline-secondary dropdown-toggle" type="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          {{mfgSelLabel || mfgs[0][0]}}
-        </button>
-        <ul class="dropdown-menu">
-          <li *ngFor="let item of mfgs">
-            <a *ngIf="item.hasOwnProperty('active')" class="dropdown-item" (click)="setSkuDisplayMFG(item)"
-              style="cursor: pointer; background-color: #fff;">{{item[0]}}
-              <span *ngFor="let imgSku of item[1]" class="tip mx-1" data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-title="Tooltip on top">
-                <img width="22"
-                  [src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'" alt="">
-                <small class="_tip">Tip here...</small>
-              </span>
-            </a>
-            <a *ngIf="!item.hasOwnProperty('active')" [ngStyle]="{'opacity': !item.hasOwnProperty('active') ? .25 : 1 }"
-              class="dropdown-item" (click)="setSkuDisplayMFG(item)"
-              style="cursor: pointer; background-color: #ececeb;">
-              {{item[0]}}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- COLOR -->
-    <div class="col-auto">
-      <label for="">Color: </label>
-      <div class="dropdown">
-        <button style="width: 270px" class="btn btn-outline-secondary dropdown-toggle" type="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          {{colSelLabel || colors[0][0] }}
-        </button>
-        <ul class="dropdown-menu">
-          <li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
-            <a class="dropdown-item" (click)="[setSkuDisplayColor(item), handleColorChange(item)]">{{item[0]}}</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<div class="container-fluid">
 
   <!-- skuDisplays -->
   <div class="row mt-3" *ngIf="false">
@@ -116,8 +59,6 @@
                 [src]="'https://static.becn.com/insecure/plain/images/large/' + sku + '_default_small.jpg'"
                 class="img-rounded" [alt]="sku">
             </button>
-
-
           </ng-container>
           <hr>
         </div>
@@ -136,6 +77,97 @@
   </div>
 </div>
 
+<!-- LEFT PANEL and TABLE -->
+<div class="container-fluid">
+
+  <!-- CTAS -->
+  <!--   <div class="row my-3" style="text-transform: uppercase;">
+    <div class="col-md-3"><button mat-raised-button color="primary">Save All</button></div>
+    <div class=" col-md-3"><button mat-raised-button color="primary">ADD Product</button></div>
+    <div class=" col-md-3"><button mat-raised-button color="primary">Clear Quantity</button></div>
+    <div class=" col-md-3"><button mat-raised-button color="primary">Copy Quote</button></div>
+    <div class=" col-md-4"><button mat-raised-button color="primary">ADD Items to Cart</button></div>
+  </div>
+ -->
+
+  <div class="row my-3">
+    <div class="col-md-3" style="border: solid thin rgb(204, 204, 204);">&nbsp;</div>
+    <div class="col-md-9" style="text-transform: uppercase;">
+
+      <div class="row">
+        <!-- CTAS -->
+        <div class="col-md-auto"><button mat-raised-button color="primary">Save All</button></div>
+        <div class="col-md-auto"><button mat-raised-button color="primary">ADD Product</button></div>
+        <div class="col-md-auto"><button mat-raised-button color="primary">Clear Quantity</button></div>
+        <div class="col-md-auto"><button mat-raised-button color="primary">Copy Quote</button></div>
+        <div class="col-md-auto"><button mat-raised-button color="primary">ADD Items to Cart</button></div>
+
+        <!-- TABLE -->
+        <div class="col-md-12 mt-3">
+          <table mat-table [dataSource]="sampleDataSrc1?.templateItems" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Select Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef> Add </th>
+              <td mat-cell *matCellDef="let element"> <mat-checkbox></mat-checkbox> </td>
+            </ng-container>
+
+            <!-- Product Column -->
+            <ng-container matColumnDef="product">
+              <th mat-header-cell *matHeaderCellDef> Product </th>
+              <td mat-cell *matCellDef="let element" style="padding: 5px 0px 5px 0px">
+                <img width="64"
+                  [src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
+                  [alt]="element.itemNumber">
+              </td>
+            </ng-container>
+
+            <!-- Details Column -->
+            <ng-container matColumnDef="details">
+              <th mat-header-cell *matHeaderCellDef> Details </th>
+              <td mat-cell *matCellDef="let element">
+                <section>
+                  <h3 class="mb-1" style="font-size: .925rem">{{ element.itemOrProductDescription}}</h3>
+                  <div class="my-1">#{{ element.itemNumber}}</div>
+                  <div class="my-1">{{ element.nickname}}</div>
+                  <div *ngIf="false; else VariationUI"> </div>
+                </section>
+              </td>
+            </ng-container>
+
+            <!-- Price Column -->
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let element"> {{element.unitPrice | currency }} </td>
+            </ng-container>
+
+            <!-- Qty Column -->
+            <ng-container matColumnDef="qty">
+              <th mat-header-cell *matHeaderCellDef> Qty </th>
+              <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+            </ng-container>
+
+            <!-- Delete Column -->
+            <ng-container matColumnDef="del">
+              <th mat-header-cell *matHeaderCellDef> Delete </th>
+              <td mat-cell *matCellDef="let element"> <mat-icon style="color: #fe5c77">delete</mat-icon>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['select','product', 'details', 'price', 'qty', 'del' ]"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['select','product', 'details', 'price', 'qty', 'del' ];"></tr>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- TEMPLATES -->
 <ng-template #checkbox>
@@ -147,8 +179,64 @@
   </div>
 </ng-template>
 
-<ng-template #IMG>
+<ng-template #VariationUI>
+  <div>
+    <!-- MFG -->
+    <section class="row">
 
+      <!-- IMG -->
+      <!-- <div class="col-md-1" style="text-align: center">       
+        <span>{{ mfgSelection[1][0]  }}</span>
+        <img style="border-radius: 6px; width: 80px; height: 80px"
+          [src]="'https://static.becn.com/insecure/plain/images/large/' + displaySelectedSku() + '_default_small.jpg'"
+          class="img-rounded" [alt]="mfgSelection[0]">
+      </div> -->
+
+      <div class="col-auto my-2">
+        <label for="">MFG: </label>
+        <div class="dropdown">
+          <button style="width: auto; font-size: .925rem" class="btn btn-outline-secondary dropdown-toggle"
+            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{mfgSelLabel || mfgs[0][0]}}
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let item of mfgs">
+              <a *ngIf="item.hasOwnProperty('active')" class="dropdown-item" (click)="setSkuDisplayMFG(item)"
+                style="cursor: pointer; background-color: #fff; font-size: .925rem;">{{item[0]}}
+                <span *ngFor="let imgSku of item[1]" class="tip mx-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                  data-bs-title="Tooltip on top">
+                  <img width="18"
+                    [src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
+                    alt="">
+                  <!--  <small class="_tip">Tip here...</small> -->
+                </span>
+              </a>
+              <a *ngIf="!item.hasOwnProperty('active')"
+                [ngStyle]="{'opacity': !item.hasOwnProperty('active') ? .25 : 1 }" class="dropdown-item"
+                (click)="setSkuDisplayMFG(item)"
+                style="cursor: pointer; background-color: #ececeb; font-size: .925rem;">
+                {{item[0]}}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- COLOR -->
+      <div class="col-auto my-2">
+        <label for="">Color: </label>
+        <div class="dropdown">
+          <button style="width: auto; font-size: .925rem" class="btn btn-outline-secondary dropdown-toggle"
+            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{colSelLabel || colors[0][0] }}
+          </button>
+          <ul class="dropdown-menu">
+            <li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
+              <a class="dropdown-item" (click)="[setSkuDisplayColor(item), handleColorChange(item)]">{{item[0]}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
 </ng-template>
-
-<!-- src="https://static.becn.com/insecure/plain/images/large/22717_default_small.jpg"  -->

@@ -3,7 +3,7 @@ import { VariationColors, VariationMfg } from '../../services/variations';
 // import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs';
-import { currSkuData_407754 } from './currentSkuData';
+import { currSkuData_407754, Large_Template as templateData } from './currentSkuData';
 
 /* TODO */
 // How do we get default or current sku selections
@@ -15,6 +15,14 @@ import { currSkuData_407754 } from './currentSkuData';
   styleUrls: ['./home.component.scss']
 } )
 export class HomeComponent implements OnInit {
+  sampleDataSrc = [
+    { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 1.0079, qty: 1, del: '' },
+    { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 1.79, qty: 2, del: '' },
+    { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 12.0079, qty: 1, del: '' },
+    { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 231, qty: 3, del: '' },
+    { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 123.5, qty: 1, del: '' },
+  ]
+  sampleDataSrc1: any = templateData;
   currentSkuData = currSkuData_407754;
   /*  */
   mfgs: any = [];
@@ -46,29 +54,15 @@ export class HomeComponent implements OnInit {
   /*  */
   selectedSkuColor: any = ['Acadia(750)', ['555291']];
   selectedSkuMfg: any = ['A.B. Seam', ['22718']];
-  constructor() { }
+  constructor() {
+    console.log( 'sampleDataSrc1', this.sampleDataSrc1.templateItems )
+  }
 
   ngOnInit(): void {
+    // 
     this.initializeDropdowns();
 
     /* CUURENT SKU DATA */
-
-    const Best_Line_Building_Products = [
-      "568393",
-      "265348",
-      "40783",
-      "22718",
-      "520433",
-      "40775",
-      "40785",
-      "22720",
-      "40779",
-      "282705"
-    ]
-    const County_Beige405 = [
-      "40775"
-    ]
-
     // currSku variations has shorter list of mfgs and colors but name only
     // find these matches in larger list of mfgs and colors
 
@@ -304,6 +298,12 @@ export class HomeComponent implements OnInit {
   toggleShowTiles() {
     this.showTiles.next( !this.showTiles.value )
   }
+
+
+  /* MISC */
+  /*   getFullUrl( sku: string ) {
+      return "'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
+    } */
 
   /* DRAFT */
   handleColor( color: string = 'Ash(502)' ) {

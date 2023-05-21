@@ -2,14 +2,19 @@ small {
   display: none;
 }
 
-tip:hover {
-  //
+table {
+  width: 100%;
 }
 
-/* .tip:hover {
-  visibility: visible;
+.mat-column-product {
+  width: 8%
 }
- */
-/* small {
-  visibility: hidden;
-} */
+
+.mat-column-qty {
+  // width: 5%
+  padding: 0px 10px 0px 10px
+}
+
+.mat-raised-button.mat-primary {
+  background: #025f9e;
+}
