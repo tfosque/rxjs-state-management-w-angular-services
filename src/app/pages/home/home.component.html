@@ -1,13 +1,14 @@
 <!-- <p>home works!</p> -->
 
-<div class="container-fluid">
+<div class="container-fluid" style="border: solid thin #e3e3e3; padding: 9px 9px">
 
   <!-- MFG -->
   <section class="row">
 
     <!-- IMG -->
-    <div class="col-md-1">
+    <div class="col-md-1" style="text-align: center">
       <!--  <img src="" alt="" width="80" height="80"> -->
+      <span>{{ mfgSelection[1][0]  }}</span>
       <img style="border-radius: 6px; width: 80px; height: 80px"
         [src]="'https://static.becn.com/insecure/plain/images/large/' + displaySelectedSku() + '_default_small.jpg'"
         class="img-rounded" [alt]="mfgSelection[0]">
@@ -16,14 +17,24 @@
     <div class="col-auto">
       <label for="">MFG: </label>
       <div class="dropdown">
-        <button style="width: 270px" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button style="width: 270px" class="btn btn-outline-secondary dropdown-toggle" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
           {{mfgSelLabel || mfgs[0][0]}}
         </button>
         <ul class="dropdown-menu">
           <li *ngFor="let item of mfgs">
-            <a *ngIf="true" class="dropdown-item" (click)="setSkuDisplayMFG(item)">{{item[0]}}</a>
-            <a *ngIf="false" class="dropdown-item" (click)="setSkuDisplayMFG(item)" style="background-color: #ea920e;">
+            <a *ngIf="item.hasOwnProperty('active')" class="dropdown-item" (click)="setSkuDisplayMFG(item)"
+              style="cursor: pointer; background-color: #fff;">{{item[0]}}
+              <span *ngFor="let imgSku of item[1]" class="tip mx-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-title="Tooltip on top">
+                <img width="22"
+                  [src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'" alt="">
+                <small class="_tip">Tip here...</small>
+              </span>
+            </a>
+            <a *ngIf="!item.hasOwnProperty('active')" [ngStyle]="{'opacity': !item.hasOwnProperty('active') ? .25 : 1 }"
+              class="dropdown-item" (click)="setSkuDisplayMFG(item)"
+              style="cursor: pointer; background-color: #ececeb;">
               {{item[0]}}
             </a>
           </li>
@@ -35,8 +46,8 @@
     <div class="col-auto">
       <label for="">Color: </label>
       <div class="dropdown">
-        <button style="width: 270px" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button style="width: 270px" class="btn btn-outline-secondary dropdown-toggle" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
           {{colSelLabel || colors[0][0] }}
         </button>
         <ul class="dropdown-menu">
@@ -49,7 +60,7 @@
   </section>
 
   <!-- skuDisplays -->
-  <div class="row mt-3">
+  <div class="row mt-3" *ngIf="false">
     <div class="col-md-12">
       <div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
         <!-- Mfg Skus -->
@@ -76,7 +87,7 @@
 
 
   <!-- Show All Skus -->
-  <div class="row mt-3">
+  <div class="row mt-3" *ngIf="false">
     <div class="col-md-12">
       <div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
         <!-- Mfg Skus -->
