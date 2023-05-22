@@ -345,6 +345,9 @@ export class HomeComponent implements OnInit {
   } */
   handleLoadErrors() { }
 
+  doSomething( e: any, type: any ) {
+    return;
+  }
 
   /*   onDropListItem( event: CdkDragDrop<any> ) {
       console.log( { event } );
@@ -360,12 +363,12 @@ export class HomeComponent implements OnInit {
       return sum;
   } */
   getItemVariations( data: any, index: any ) {
-    console.log( { data }, { index } );
+    // console.log( { data }, { index } );
     const list = data[index];
-    console.log( { list } );
+    // console.log( { list } );
     const KEYS = Object.keys( list );
     if ( index === 'color' ) {
-      console.log( { KEYS } )
+      // console.log( { KEYS } )
     }
     return KEYS;
   }

@@ -182,8 +182,8 @@
 									<h3 class="col-md-12 mb-1">{{ element.itemOrProductDescription}}</h3>
 
 									<!-- NICKNAME -->
-									<form class="col-md-4 mt-2" style="width: 200px;">
-										<mat-form-field class="example-full-width">
+									<form class="col-md-3 mt-2" style="width: auto;">
+										<mat-form-field style="width: 138px;">
 											<mat-label style="text-transform: capitalize">Nickname</mat-label>
 											<input matInput [value]="element.nickname || ''">
 										</mat-form-field>
@@ -192,35 +192,22 @@
 									<!-- VARIATIONS -->
 									<div class="col-auto my-2"
 										*ngFor="let variationType of element.multiVariationData?.allVariationTypes; let i = index">
-										<label style="font-size: .75rem;">{{variationType}}: </label>
-										<div class="dropdown">
-											<button style="width: auto; font-size: .825rem; border: solid thin #e0dede"
-												class="btn btn-outline-secondary dropdown-toggle" type="button"
-												data-bs-toggle="dropdown" aria-expanded="false">
-												{{ element.multiVariationData?.currentVariations[variationType] }}
-											</button>
-											<ul class="dropdown-menu">
-												<li
-													*ngFor="let item of getItemVariations(element.multiVariationData?.variations, variationType)">
-													<a class="dropdown-item"
-														style="cursor: pointer; background-color: #fff; font-size: .825rem;">
-														{{item}}
-														<!-- <ng-container *ngIf="variationType === 'color'">
-															<span *ngFor="let imgSku of item[1]" class="tip mx-1">
-																<img width="18"
-																	[src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
-																	alt="">
-															</span>
-														</ng-container> -->
-													</a>
-													<!-- <a *ngIf="!item.hasOwnProperty('active')"
-														[ngStyle]="{'opacity': !item.hasOwnProperty('active') ? .25 : 1 }"
-														class="dropdown-item" (click)="setSkuDisplayMFG(item)"
-														style="cursor: pointer; background-color: #ececeb; font-size: .825rem;">
-														{{item[0]}}
-													</a> -->
-												</li>
-											</ul>
+										<div class="cell medium-shrink">
+											<mat-form-field appearance="outline" style="font-size: .825rem;" [ngStyle]="{
+												'width': variationType === 'packaging' ? '158px' : variationType === 'color' ? '240px' : 
+												variationType === 'MFG' ? '240px' : variationType === 'diameter' ? '130px' : 
+												variationType === 'size' ? '110px' : '90px'											
+												}">
+												<mat-label class="input-label"
+													style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
+												<mat-select (selectionChange)="doSomething($event, variationType)"
+													[value]="element.multiVariationData?.currentVariations[variationType]">
+													<mat-option
+														*ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"
+														[value]="dd">
+														{{ dd  }}</mat-option>
+												</mat-select>
+											</mat-form-field>
 										</div>
 									</div>
 								</div>
