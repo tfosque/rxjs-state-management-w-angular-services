@@ -208,10 +208,10 @@ export class HomeComponent implements OnInit {
     return getMatches;
   }
 
-  getItemVariations( item: any, v: any ) {
-    console.log( { item }, { v } )
-    return []
-  }
+  /*   getItemVariations( item: any, v: any ) {
+      console.log( { item }, { v } )
+      return item[v]
+    } */
 
   // get MFG matches to a selected Color
   getAllMatches( color: any = ['Acadia(750)', ['555291']] ) {
@@ -313,6 +313,63 @@ export class HomeComponent implements OnInit {
     this.getAllMatches( selection );
     return this.getMatches();
   }
+
+  /* addToSelectedItems( el: any, item: any, checked: any ): void {
+    const currentSelItems = this.selectedItems.value;
+
+    if ( !checked ) {
+        // remove item
+        const filterList = currentSelItems.filter( f => {
+            return f.itemNumber !== item.itemNumber
+        } );
+        this.selectedItems.next( filterList );
+        console.log( 'this:sel:', this.selectedItems.value )
+        return;
+    }
+
+    this.selectedItems.next( [...currentSelItems, ...item] );
+} */
+
+  /* onVariationChange( sku: any ) {
+      // skus = []
+      const skus = this.templateItemVariations.value.map( ( m: any ) => {
+          return m;
+      } )
+      console.log( { skus } );
+  
+      // filteredSku = {}
+      skus.filter( ( f: any ) => {
+          console.log( 'filter:', f === sku )
+      } )
+      // this.newImage = filteredSku
+  } */
+  handleLoadErrors() { }
+
+
+  /*   onDropListItem( event: CdkDragDrop<any> ) {
+      console.log( { event } );
+      moveItemInArray( this.templatePageLineItems.value, event.previousIndex, event.currentIndex )
+  }
+   */
+  /* getTemplateItemTotals() {
+      const arr = this.templatePageLineItems.value;
+      const sum = arr.reduce( ( accumulator, object: any ) => {
+          return accumulator + ( object.unitPrice * object.quantity );
+      }, 0 );
+      // console.log( { sum } );
+      return sum;
+  } */
+  getItemVariations( data: any, index: any ) {
+    console.log( { data }, { index } );
+    const list = data[index];
+    console.log( { list } );
+    const KEYS = Object.keys( list );
+    if ( index === 'color' ) {
+      console.log( { KEYS } )
+    }
+    return KEYS;
+  }
+
 
   highlightMatch( item: any ) {
     // console.log( 'xxxxxx:', _.includes( this.matches, item ) );

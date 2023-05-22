@@ -197,21 +197,21 @@
 											<button style="width: auto; font-size: .825rem; border: solid thin #e0dede"
 												class="btn btn-outline-secondary dropdown-toggle" type="button"
 												data-bs-toggle="dropdown" aria-expanded="false">
-												<!-- element.multiVariationData?.currentVariations[v] -->
 												{{ element.multiVariationData?.currentVariations[variationType] }}
 											</button>
 											<ul class="dropdown-menu">
 												<li
 													*ngFor="let item of getItemVariations(element.multiVariationData?.variations, variationType)">
-
 													<a class="dropdown-item"
-														style="cursor: pointer; background-color: #fff; font-size: .825rem;">{{item[0]}}
-														<!-- <span *ngFor="let imgSku of item[1]" class="tip mx-1">
-															<img width="18"
-																[src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
-																alt="">
-														</span> -->
+														style="cursor: pointer; background-color: #fff; font-size: .825rem;">
 														{{item}}
+														<!-- <ng-container *ngIf="variationType === 'color'">
+															<span *ngFor="let imgSku of item[1]" class="tip mx-1">
+																<img width="18"
+																	[src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
+																	alt="">
+															</span>
+														</ng-container> -->
 													</a>
 													<!-- <a *ngIf="!item.hasOwnProperty('active')"
 														[ngStyle]="{'opacity': !item.hasOwnProperty('active') ? .25 : 1 }"
@@ -250,7 +250,7 @@
 						<!-- Delete Column -->
 						<ng-container matColumnDef="del">
 							<th mat-header-cell *matHeaderCellDef> </th>
-							<td mat-cell *matCellDef="let element"> <mat-icon style="color: #fe5c77">delete</mat-icon>
+							<td mat-cell *matCellDef="let element"> <mat-icon style="color: #025f9e">delete</mat-icon>
 							</td>
 						</ng-container>
 
