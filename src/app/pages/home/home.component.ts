@@ -208,6 +208,11 @@ export class HomeComponent implements OnInit {
     return getMatches;
   }
 
+  getItemVariations( item: any, v: any ) {
+    console.log( { item }, { v } )
+    return []
+  }
+
   // get MFG matches to a selected Color
   getAllMatches( color: any = ['Acadia(750)', ['555291']] ) {
     // product 40775
