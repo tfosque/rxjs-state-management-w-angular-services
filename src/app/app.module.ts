@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule( {
   declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent],
   imports: [
@@ -32,7 +33,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],

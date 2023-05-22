@@ -15,6 +15,31 @@ import { currSkuData_407754, Large_Template as templateData } from './currentSku
   styleUrls: ['./home.component.scss']
 } )
 export class HomeComponent implements OnInit {
+
+  folders: any[] = [
+    {
+      name: 'Photos',
+      updated: new Date( '1/1/16' ),
+    },
+    {
+      name: 'Recipes',
+      updated: new Date( '1/17/16' ),
+    },
+    {
+      name: 'Work',
+      updated: new Date( '1/28/16' ),
+    }
+  ];
+  notes: any[] = [
+    {
+      name: 'Vacation Itinerary',
+      updated: new Date( '2/20/16' ),
+    },
+    {
+      name: 'Kitchen Remodel',
+      updated: new Date( '1/18/16' ),
+    }
+  ];
   sampleDataSrc = [
     { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 1.0079, qty: 1, del: '' },
     { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 1.79, qty: 2, del: '' },
