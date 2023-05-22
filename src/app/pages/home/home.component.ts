@@ -4,7 +4,8 @@ import { VariationColors, VariationMfg } from '../../services/variations';
 import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { currSkuData_407754, Large_Template as templateData } from './currentSkuData';
-
+import { AddProductModalPilotComponent } from 'src/app/shared-components/add-product-modal-pilot/add-product-modal-pilot.component';
+import { MatDialog } from '@angular/material/dialog';
 /* TODO */
 // How do we get default or current sku selections
 // 
@@ -79,13 +80,13 @@ export class HomeComponent implements OnInit {
   /*  */
   selectedSkuColor: any = ['Acadia(750)', ['555291']];
   selectedSkuMfg: any = ['A.B. Seam', ['22718']];
-  constructor() {
-    console.log( 'sampleDataSrc1', this.sampleDataSrc1.templateItems )
+  constructor(
+    public dialogComp: MatDialog ) {
+    console.log( 'sampleDataSrc1', this.sampleDataSrc1.templateItems );
   }
 
   ngOnInit(): void {
-    // 
-    this.initializeDropdowns();
+    // this.initializeDropdowns();
 
     /* CUURENT SKU DATA */
     // currSku variations has shorter list of mfgs and colors but name only
@@ -102,7 +103,6 @@ export class HomeComponent implements OnInit {
     const sortCurrSkuCOLOR = this.sortList( currSkuCOLOR );
     const baseVariationsMFG = this.sortList( Object.entries( baseVariations.MFG ) );
     const baseVariationsCOLOR = this.sortList( Object.entries( baseVariations.COLOR ) );
-
 
     /* LOG */
     /*  console.group();
@@ -122,20 +122,13 @@ export class HomeComponent implements OnInit {
     /*  */
 
     // first return the matching skus from base MFG(808) and currSkuMFG(39)
-    const results = sortCurrSkuMFG
+    const tagAsMatch = sortCurrSkuMFG
       .map( ( currSku: any, index: number ) => {
         // console.log( 'baseVariations[MFG][entries]:', baseVariations['MFG'].hasOwnProperty( currSku ) ? baseVariations['MFG'][currSku] : null )
         return baseVariations['MFG'].hasOwnProperty( currSku ) ? { name: currSku, skus: baseVariations['MFG'][currSku], active: true } : null
       } );
-    console.log( { results } );
+    console.log( { tagAsMatch } );
     /* END CURR SKU DATA */
-
-    /* PRODUCT 40775 tested */
-    /*  this.objectMFG = VariationMfg; // { ABC: ["265348", "22718", "282705"] }
-     this.objectColor = VariationColors; // { Adobe(301): ["22720"] }
-     const objectMFG = this.objectMFG;
-     const objectColor = this.objectColor;
-     console.log( { objectMFG } ); console.log( { objectColor } ); */
   }
 
   /* Custom Methods */
@@ -149,6 +142,20 @@ export class HomeComponent implements OnInit {
 
     /* Display results  */
     this.setSkuDisplayMFG( defaultSelections.mfg );
+  }
+  populateDefaultVariations() {
+    console.log( '.populateDefaultVariations.....' );
+
+    const objectMFG = this.objectMFG;
+    const objectColor = this.objectColor;
+
+    console.log( { objectMFG } );
+
+    const MFGS = Object.entries( objectMFG );
+    const COLORS = Object.entries( objectColor );
+
+    // TODO review if needed this.mfgs = _.orderBy( MFGS );
+    this.colors = this.sortList( COLORS );
   }
   getAllMfg() {
     return Object.entries( this.objectMFG );
@@ -169,28 +176,12 @@ export class HomeComponent implements OnInit {
   }
 
   /*  _zip, unzip, pullAt, without, xor, compact _.includes */
-  populateDefaultVariations() {
-    console.log( '.populateDefaultVariations.....' );
-
-    const objectMFG = this.objectMFG;
-    const objectColor = this.objectColor;
-
-    console.log( { objectMFG } );
-
-    const MFGS = Object.entries( objectMFG );
-    const COLORS = Object.entries( objectColor );
-
-    // TODO review if needed this.mfgs = _.orderBy( MFGS );
-    this.colors = this.sortList( COLORS );
-  }
 
   /* HANDLE COLOR CHANGE */
   handleColorChange( selColor: any = { 'Acadia(750)': ['555291'] } ) {
-    this.itemCnt.next( 0 );
+    console.log( { selColor } )
 
-    // console.log( { selColor } )
     // TODO default Sku is this important when no selection has been made?
-
     const objectMFG = this.objectMFG;
     const objectColor = this.objectColor;
 
@@ -201,6 +192,29 @@ export class HomeComponent implements OnInit {
     this.colors = this.sortList( Object.entries( objectColor ) );
     /*  */
   }
+  setSkuDisplayMFG( selection: any ) {
+    // console.log( { selection } )
+    this.selectedMFG = selection[1];
+    this.mfgSelLabel = selection[0]
+    this.mfgSelection = selection; // console.log( 'mfgSelection:', this.mfgSelection )
+    this.mfgSelectionSkus = [];
+
+    this.getMatches();
+    this.getAllMatches();
+    return this.getMatches();
+  }
+  setSkuDisplayColor( selection: any ) {
+    // console.log( { selection } )
+    this.skuDisplayColor = selection[1];
+    this.colSelLabel = selection[0]
+    this.colorSelection = selection;
+    this.colorSelectionSkus = []
+
+    this.getMatches();
+    this.getAllMatches( selection );
+    return this.getMatches();
+  }
+
   getMatches() {
     const getMatches: any = _.intersection( this.selectedMFG, this.skuDisplayColor );
     this.matches = getMatches;
@@ -290,29 +304,6 @@ export class HomeComponent implements OnInit {
   displaySelectedSku() {
     return this.mfgSelection[1]?.length < 2 ? this.mfgSelection[1] : this.mfgSelection[1][0];
   }
-  setSkuDisplayMFG( selection: any ) {
-    // console.log( { selection } )
-    this.selectedMFG = selection[1];
-    this.mfgSelLabel = selection[0]
-    this.mfgSelection = selection; // console.log( 'mfgSelection:', this.mfgSelection )
-    this.mfgSelectionSkus = [];
-
-    this.getMatches();
-    this.getAllMatches();
-    return this.getMatches();
-  }
-
-  setSkuDisplayColor( selection: any ) {
-    // console.log( { selection } )
-    this.skuDisplayColor = selection[1];
-    this.colSelLabel = selection[0]
-    this.colorSelection = selection;
-    this.colorSelectionSkus = []
-
-    this.getMatches();
-    this.getAllMatches( selection );
-    return this.getMatches();
-  }
 
   /* addToSelectedItems( el: any, item: any, checked: any ): void {
     const currentSelItems = this.selectedItems.value;
@@ -345,7 +336,12 @@ export class HomeComponent implements OnInit {
   } */
   handleLoadErrors() { }
 
-  doSomething( e: any, type: any ) {
+  doSomething( evt: any, element: any, vtype: any ) {
+    console.group();
+    console.log( evt );
+    console.log( element );
+    console.log( vtype );
+    console.groupEnd();
     return;
   }
 
@@ -387,6 +383,15 @@ export class HomeComponent implements OnInit {
 
   toggleShowTiles() {
     this.showTiles.next( !this.showTiles.value )
+  }
+
+  /* GENERAL */
+  openDialog() {
+    const dialogRef = this.dialogComp.open( AddProductModalPilotComponent );
+
+    dialogRef.afterClosed().subscribe( result => {
+      console.log( `Dialog result: ${result}` );
+    } );
   }
 
 

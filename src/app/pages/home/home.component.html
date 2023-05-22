@@ -145,7 +145,8 @@
 			<div class="row mt-3">
 				<!-- CTAS -->
 				<div class="col-md-auto"><button mat-raised-button color="secondary" disabled>Save All</button></div>
-				<div class="col-md-auto"><button mat-raised-button color="primary">ADD Product</button></div>
+				<div class="col-md-auto"><button mat-raised-button color="primary" (click)="openDialog()">ADD
+						Product</button></div>
 				<div class="col-md-auto"><button mat-raised-button color="primary">ADD Items to Cart</button></div>
 				<div class="col-md-auto"><button mat-raised-button color="light">Clear Quantity</button></div>
 				<div class="col-md-auto"><button mat-raised-button color="light">Copy Quote</button></div>
@@ -153,7 +154,6 @@
 				<!-- TABLE -->
 				<div class="col-md-12 mt-3 mb-5">
 					<table mat-table [dataSource]="sampleDataSrc1?.templateItems" class="mat-elevation-z8">
-
 						<!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
 
@@ -174,7 +174,7 @@
 							</td>
 						</ng-container>
 
-						<!-- Details Column -->
+						<!-- DETAILS Column -->
 						<ng-container matColumnDef="details">
 							<th mat-header-cell *matHeaderCellDef> Details </th>
 							<td mat-cell *matCellDef="let element">
@@ -200,7 +200,7 @@
 												}">
 												<mat-label class="input-label"
 													style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
-												<mat-select (selectionChange)="doSomething($event, variationType)"
+												<mat-select (selectionChange)="doSomething($event, element, variationType)"
 													[value]="element.multiVariationData?.currentVariations[variationType]">
 													<mat-option
 														*ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"

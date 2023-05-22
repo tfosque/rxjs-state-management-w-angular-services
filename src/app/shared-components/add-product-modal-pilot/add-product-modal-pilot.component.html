@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Find a Product</h2>
+<mat-dialog-content class="mat-typography" style="width: 70vw;">
+  <div class="row">
+    <div class="col-md-3">
+      sidebar
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="row">
+        <!-- CARD -->
+        <mat-card class="col-md-3" *ngFor="let item of (products | async).items">
+
+          <mat-card-content>
+            <!-- IMG -->
+            <!--  <img appImgErr mat-card-image [src]="baseImgUrl + item.imageUrl.large" alt="Photo of a productDetail"> -->
+            <img appImgErr [fallbackIMgSrc]="item.productOnErrorImage" mat-card-image
+              [src]="baseImgUrl + item.productImage" [alt]="item.productId" class="img-fluid">
+            <p>
+              {{item.itemOrProductDescription}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+
+<!-- BUTTONS -->
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="secondary" [mat-dialog-close]="true" cdkFocusInitial>
+    ADD
+  </button>
+</mat-dialog-actions>

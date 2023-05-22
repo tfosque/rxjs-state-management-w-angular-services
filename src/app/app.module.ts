@@ -19,8 +19,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { AddProductModalPilotComponent } from './shared-components/add-product-modal-pilot/add-product-modal-pilot.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ImgErrDirective } from './directives/img-err.directive';
 @NgModule( {
-  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +37,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],
