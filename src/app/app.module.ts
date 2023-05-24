@@ -21,9 +21,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { AddProductModalPilotComponent } from './shared-components/add-product-modal-pilot/add-product-modal-pilot.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
+
 import { ImgErrDirective } from './directives/img-err.directive';
+import { SelectedDetailViewComponent } from './shared-components/selected-detail-view/selected-detail-view.component';
 @NgModule( {
-  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective],
+  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective, SelectedDetailViewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,7 +44,11 @@ import { ImgErrDirective } from './directives/img-err.directive';
     MatCheckboxModule,
     MatButtonModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatBadgeModule,
+    MatListModule,
+    MatChipsModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],

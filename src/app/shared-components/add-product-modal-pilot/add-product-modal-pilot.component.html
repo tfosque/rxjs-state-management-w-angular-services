@@ -1,36 +1,73 @@
-<h2 mat-dialog-title>Find a Product</h2>
-<mat-dialog-content class="mat-typography" style="width: 70vw;">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      sidebar
+      <h2 mat-dialog-title>Find a Product 3756</h2>
     </div>
-
     <div class="col-md-9">
-
       <div class="row">
-        <!-- CARD -->
-        <mat-card class="col-md-3" *ngFor="let item of (products | async).items">
-
-          <mat-card-content>
-            <!-- IMG -->
-            <!--  <img appImgErr mat-card-image [src]="baseImgUrl + item.imageUrl.large" alt="Photo of a productDetail"> -->
-            <img appImgErr [fallbackIMgSrc]="item.productOnErrorImage" mat-card-image
-              [src]="baseImgUrl + item.productImage" [alt]="item.productId" class="img-fluid">
-            <p>
-              {{item.itemOrProductDescription}}
-            </p>
-          </mat-card-content>
-        </mat-card>
+        <!--  <div class="col-md-1"><button mat-button mat-stroked-button color="basic">Back</button></div> -->
+        <div class="col-md-1 offset-md-10">
+          <button mat-button mat-stroked-button color="basic" mat-dialog-close>Cancel</button>
+        </div>
       </div>
     </div>
   </div>
+</div>
+<!-- Divider -->
+<div class="row"><mat-divider class="col"></mat-divider></div>
+
+<mat-dialog-content #scrollContainer class="mat-typography" style="width: 70vw; overflow-y: scroll">
+  <div class="row mt-3">
+
+    <!-- PRODUCT VIEW -->
+    <div class="col-md-9">
+      <div class="row" style="margin: auto; width: 770px">
+        <!-- CARD -->
+        <div *ngIf="true" class="col-md-12 my-2">
+          <app-selected-detail-view [hidden]="(selectedModalProducts | async)?.length === 0"
+            [panelOpenState]="panelOpenState" [scroll]="scroll"
+            [product]="currSelection | async"></app-selected-detail-view>
+        </div>
+
+        <ng-container *ngFor="let item of (products | async).items; let i = index">
+
+          <!-- IMG -->
+          <mat-card class="col-md-3 my-2 mx-1" style="width: 11.75vw; cursor: pointer" (click)="selectProduct(item)">
+            <mat-card-content>
+              <div>{{item.brand}}</div>
+              <img appImgErr [fallbackIMgSrc]="item.productOnErrorImage" mat-card-image
+                [src]="baseImgUrl + item.productImage" [alt]="item.productId" class="img-fluid">
+              <p>{{item.productName}}</p>
+            </mat-card-content>
+            <div>{{item.productId}}</div>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="col-md-3" style="border-right: dotted thin #e7e6e6">
+      <mat-selection-list role="list" #selections>
+        <mat-list-item> <span>Selected Items: <span
+              *ngIf="(selectedModalProducts | async)?.length > 0">{{(selectedModalProducts | async)?.length}}</span></span></mat-list-item>
+        <mat-list-option role="listoption"
+          *ngFor="let item of selectedModalProducts | async">{{item.productId}}</mat-list-option>
+      </mat-selection-list>
+    </div>
+
+
+  </div>
 </mat-dialog-content>
 
+<div class="row"><mat-divider></mat-divider></div>
 
 <!-- BUTTONS -->
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="secondary" [mat-dialog-close]="true" cdkFocusInitial>
-    ADD
-  </button>
+<mat-dialog-actions align="end" class="row">
+  <!--  <button mat-button mat-dialog-close color="basic">Cancel</button> -->
+  <div class="col-md-auto">
+    <button mat-button mat-raised-button style="text-transform: uppercase; background: orange; color: #fff"
+      [mat-dialog-close]="true" [disabled]="(selectedModalProducts | async)?.length === 0">
+      ADD SELECTED PRODUCTS TO CART
+    </button>
+  </div>
 </mat-dialog-actions>

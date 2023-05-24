@@ -108273,3 +108273,746 @@ export const SampleProducts_Pg3 = {
     }
   ]
 }
+
+/* Item Details */
+export const Item446323 = {
+  "result": null,
+  "product": {
+    "itemNumber": "353315",
+    "skuList": null,
+    "productId": "C-040433",
+    "productOnErrorImage": "/images/large/brand/polyglass_brand_small.jpg",
+    "relatedProducts": null,
+    "productName": "Polyglass 140 mil 39-3/8\" x 32'10\" Elastoflex&reg; SA P Self-Adhered Granulated SBS (Elastomeric) Cap Sheet 1 SQ. Roll Black",
+    "url": null,
+    "internalProductName": "Elastoflex&reg; SA P Self-Adhered Granulated SBS (Elastomeric) Cap Sheet",
+    "baseProductName": "Polyglass Elastoflex&reg; SA P Self-Adhered Granulated SBS (Elastomeric) Cap Sheet",
+    "manufactureNumber": "ESA35BL",
+    "productImage": "/images/large/C-040433_default_small.jpg",
+    "productAdditionalOnErrorImage": "/images/large/brand/polyglass_brand_thumb.jpg",
+    "shortDesc": null,
+    "categories": [
+      {
+        "facetId": "2136009225",
+        "categoryName": "Cap Sheets",
+        "categoryId": "CAT_CRO_MOD_SBS_CAP"
+      },
+      {
+        "facetId": "2136009230",
+        "categoryName": "SBS Membranes",
+        "categoryId": "CAT_CRO_MOD_SBS"
+      },
+      {
+        "facetId": "2136009222",
+        "categoryName": "Modified Roofing System",
+        "categoryId": "CAT_CRO_MOD"
+      },
+      {
+        "facetId": "2136009162",
+        "categoryName": "Commercial Roofing",
+        "categoryId": "CAT_CRO"
+      }
+    ],
+    "brand": "Polyglass",
+    "longDesc": "<p>Elastoflex SA P is a high performance reinforced polyester mat provides excellent dimensional stability. A high quality elastomeric Styrene Butadiene-Styrene (SBS) modified asphalt compound is applied on the top layer and an aggressive self-adhesive compound is applied on the bottom layer. The premium, granule surfaced, fire rated, self-adhered, polyester reinforced SBS modified bitumen roofing product manufactured using patented Adeso dual-compound self-adhesive technology. The tope surface of the Elastoflex SA P membrane has a granular finish available in a variety of colors. The cap sheet features patented FastLap for granule free roll ends, as well as SealLap, a factory applied adhesive treatment at the membrane overlap. Each of these patented features provide for greater ease of application as well as improved long term weathering performance.</p>"
+  },
+  "skuList": [
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "353315",
+      "swatchImage": "/images/large/353315_default_swatch.jpg",
+      "thumbImage": "/images/large/353315_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Black"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPBL",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/353315_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "353319",
+      "swatchImage": "/images/large/353319_default_swatch.jpg",
+      "thumbImage": "/images/large/353319_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Chestnut"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPCH",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/353319_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "353320",
+      "swatchImage": "/images/large/353320_default_swatch.jpg",
+      "thumbImage": "/images/large/353320_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Grey Slate"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPGS",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/353320_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "353322",
+      "swatchImage": "/images/large/353322_default_swatch.jpg",
+      "thumbImage": "/images/large/353322_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Oak"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPOA",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/353322_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "353323",
+      "swatchImage": "/images/large/353323_default_swatch.jpg",
+      "thumbImage": "/images/large/353323_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Red"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPRD",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/353323_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "40434",
+      "swatchImage": "/images/large/40434_default_swatch.jpg",
+      "thumbImage": "/images/large/40434_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Weatherwood"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPWW",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/40434_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "353324",
+      "swatchImage": "/images/large/353324_default_swatch.jpg",
+      "thumbImage": "/images/large/353324_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "White"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPWH",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/353324_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "40433",
+      "swatchImage": "/images/large/40433_default_swatch.jpg",
+      "thumbImage": "/images/large/40433_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Buff"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPBU",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/40433_default_hero.jpg"
+    },
+    {
+      "unitPrice": 155.74,
+      "itemNumber": "446323",
+      "swatchImage": "/images/large/446323_default_swatch.jpg",
+      "thumbImage": "/images/large/446323_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Heather Blend"
+        ],
+        "size": [
+          "39-3/8\" x 32'10\""
+        ],
+        "thickness": [
+          "140 mil"
+        ],
+        "width": [
+          "39-3/8\""
+        ],
+        "length": [
+          "32'10\""
+        ],
+        "packaging": [
+          "1 SQ. Roll"
+        ]
+      },
+      "productNumber": "POLEFSAPHB",
+      "currentUOM": "RL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/446323_default_hero.jpg"
+    }
+  ],
+  "currentSKU": {
+    "unitPrice": 155.74,
+    "itemNumber": "353315",
+    "uomlist": null,
+    "productNumber": "POLEFSAPBL",
+    "currentUOM": "RL",
+    "skuShortDesc": null,
+    "itemImage": "/images/large/353315_default_hero.jpg",
+    "swatchImage": "/images/large/353315_default_swatch.jpg",
+    "thumbImage": "/images/large/353315_default_thumb.jpg",
+    "manufactureNumber": "ESA35BL",
+    "auxiliaryImages": null,
+    "variations": {
+      "color": [
+        "Black"
+      ],
+      "size": [
+        "39-3/8\" x 32'10\""
+      ],
+      "thickness": [
+        "140 mil"
+      ],
+      "width": [
+        "39-3/8\""
+      ],
+      "length": [
+        "32'10\""
+      ],
+      "packaging": [
+        "1 SQ. Roll"
+      ]
+    },
+    "heroImages": [
+      {
+        "image": "/images/large/353315_default_hero.jpg"
+      }
+    ]
+  },
+  "resource": {
+    "Product Data Sheet (English)": "https://polyglass.us/wp-content/uploads/2015/02/Elastoflex-SA-P-PDS-6.pdf",
+    "Product Data Sheet (Spanish)": "https://polyglass.us/wp-content/uploads/2016/10/Elastoflex-SA-P-PDS-Espanol-1.pdf",
+    "Safety Data Sheet": "https://polyglass.us/wp-content/uploads/2016/01/Product-SDS.pdf",
+    "Modified Bitumen Brochure": "https://polyglass.us/wp-content/uploads/2016/01/Multi-Ply-Modified-Bitumen-Roofing-Assemblies.pdf",
+    "SBS Roll Brochure (English)": "https://polyglass.us/wp-content/uploads/2019/02/2022-SBS-Roll-Brochure_web-1.pdf",
+    "Adeso Low Slope Installation Guide": "https://polyglass.us/wp-content/uploads/2020/07/2022-Spanish-Adeso-Low-Slope-Installation-Guide_Web_Oct2022.pdf",
+    "SBS Roll Brochure (Spanish)": "https://polyglass.us/wp-content/uploads/2020/08/SBS-Brochure-2019-Espa%C3%B1ol_web.pdf",
+    "ADESO Brochure": "https://polyglass.us/wp-content/uploads/2016/01/ADESO-Brochure-2022_web.pdf",
+    "Membrane Color Chart": "https://polyglass.us/wp-content/uploads/2018/04/Membrane-Color-Sample-Holder-2020_web-1.pdf"
+  },
+  "callBackParam": null,
+  "variations": {
+    "color": {
+      "Red": [
+        "353323"
+      ],
+      "White": [
+        "353324"
+      ],
+      "Chestnut": [
+        "353319"
+      ],
+      "Grey Slate": [
+        "353320"
+      ],
+      "Oak": [
+        "353322"
+      ],
+      "Weatherwood": [
+        "40434"
+      ],
+      "Black": [
+        "353315"
+      ],
+      "Buff": [
+        "40433"
+      ],
+      "Heather Blend": [
+        "446323"
+      ]
+    },
+    "size": {
+      "39-3/8\" x 32'10\"": [
+        "353319",
+        "353320",
+        "40434",
+        "353323",
+        "40433",
+        "353322",
+        "446323",
+        "353324",
+        "353315"
+      ]
+    },
+    "thickness": {
+      "140 mil": [
+        "353319",
+        "353320",
+        "353323",
+        "40434",
+        "40433",
+        "353322",
+        "446323",
+        "353324",
+        "353315"
+      ]
+    },
+    "packaging": {
+      "1 SQ. Roll": [
+        "353319",
+        "353320",
+        "353323",
+        "40434",
+        "353322",
+        "40433",
+        "446323",
+        "353324",
+        "353315"
+      ]
+    }
+  },
+  "specification": {
+    "Thickness": "140 mil",
+    "Length": "32'10\"",
+    "Applicable Standards": "ASTM D6164 Type I<br>\nMiami Dade County Approved<br>\nFM Approved<br>\nUL Classified<br>\nICC-ES ESR-2018<br>\nFlorida Building Code Approved<br>\nTDI Approved",
+    "Width": "39-3/8\"",
+    "Weight": "90 Lbs."
+  },
+  "message": null
+}
+
+export const Product336994 = {
+  "result": null,
+  "product": {
+    "itemNumber": "374189",
+    "skuList": null,
+    "productId": "C-336994",
+    "productOnErrorImage": "/images/large/brand/gaf_brand_small.jpg",
+    "relatedProducts": [
+      {
+        "internalProductName": "Pro-Start&reg; Starter Strip Shingles",
+        "productImage": "/images/large/C-353731_default_small.jpg",
+        "productId": "C-353731",
+        "productOnErrorImage": "/images/large/brand/gaf_brand_small.jpg",
+        "categories": [
+          {
+            "facetId": "2136009160",
+            "categoryName": "Starter Shingles",
+            "categoryId": "CAT_RER_ASP_SHA_STR"
+          },
+          {
+            "facetId": "2136009164",
+            "categoryName": "Accessories",
+            "categoryId": "CAT_RER_ASP_SHA"
+          },
+          {
+            "facetId": "2136009154",
+            "categoryName": "Asphalt Shingles",
+            "categoryId": "CAT_RER_ASP"
+          },
+          {
+            "facetId": "2136009153",
+            "categoryName": "Residential Roofing",
+            "categoryId": "CAT_RER"
+          }
+        ],
+        "brand": "GAF",
+        "productName": "GAF Pro-Start&reg; Starter Strip Shingles",
+        "url": "/productDetail/C-353731"
+      },
+      {
+        "internalProductName": "FeltBuster&reg; High-Traction Synthetic Roofing Felt",
+        "productImage": "/images/large/C-464228_default_small.jpg",
+        "productId": "C-464228",
+        "productOnErrorImage": "/images/large/brand/gaf_brand_small.jpg",
+        "categories": [
+          {
+            "facetId": "2136009536",
+            "categoryName": "Synthetic Underlayments",
+            "categoryId": "CAT_RER_REA_UND_SYN"
+          },
+          {
+            "facetId": "2136009192",
+            "categoryName": "Underlayments",
+            "categoryId": "CAT_RER_REA_UND"
+          },
+          {
+            "facetId": "2136009178",
+            "categoryName": "Residential Accessories",
+            "categoryId": "CAT_RER_REA"
+          },
+          {
+            "facetId": "2136009153",
+            "categoryName": "Residential Roofing",
+            "categoryId": "CAT_RER"
+          }
+        ],
+        "brand": "GAF",
+        "productName": "GAF FeltBuster&reg; High-Traction Synthetic Roofing Felt",
+        "url": "/productDetail/C-464228"
+      },
+      {
+        "internalProductName": "Cobra&reg; Exhaust Vent for Roof Ridge - Nail Gun",
+        "productImage": "/images/large/C-028287_default_small.jpg",
+        "productId": "C-028287",
+        "productOnErrorImage": "/images/large/brand/gaf_brand_small.jpg",
+        "categories": [
+          {
+            "facetId": "2136009757",
+            "categoryName": "Hip Vents",
+            "categoryId": "CAT_RER_REA_VEN_H&R"
+          },
+          {
+            "facetId": "2136009193",
+            "categoryName": "Ventilation",
+            "categoryId": "CAT_RER_REA_VEN"
+          },
+          {
+            "facetId": "2136009178",
+            "categoryName": "Residential Accessories",
+            "categoryId": "CAT_RER_REA"
+          },
+          {
+            "facetId": "2136009153",
+            "categoryName": "Residential Roofing",
+            "categoryId": "CAT_RER"
+          }
+        ],
+        "brand": "GAF",
+        "productName": "GAF Cobra&reg; Exhaust Vent for Roof Ridge - Nail Gun",
+        "url": "/productDetail/C-028287"
+      },
+      {
+        "internalProductName": "MasterFlow&reg; 960 Series Aluminum Slant-Back Roof Louver",
+        "productImage": "/images/large/C-494727_default_small.jpg",
+        "productId": "C-494727",
+        "productOnErrorImage": "/images/large/brand/gaf_brand_small.jpg",
+        "categories": [
+          {
+            "facetId": "2136009193",
+            "categoryName": "Ventilation",
+            "categoryId": "CAT_RER_REA_VEN"
+          },
+          {
+            "facetId": "2136009178",
+            "categoryName": "Residential Accessories",
+            "categoryId": "CAT_RER_REA"
+          },
+          {
+            "facetId": "2136009153",
+            "categoryName": "Residential Roofing",
+            "categoryId": "CAT_RER"
+          }
+        ],
+        "brand": "GAF",
+        "productName": "GAF MasterFlow&reg; 960 Series Aluminum Slant-Back Roof Louver",
+        "url": "/productDetail/C-494727"
+      }
+    ],
+    "productName": "GAF 12\" x 36\" Royal Sovereign&reg; Shingles with StainGuard Protection Golden Cedar",
+    "url": null,
+    "internalProductName": "Royal Sovereign&reg; Shingles with StainGuard Protection",
+    "baseProductName": "GAF Royal Sovereign&reg; Shingles with StainGuard Protection",
+    "manufactureNumber": null,
+    "productImage": "/images/large/C-336994_default_small.jpg",
+    "productAdditionalOnErrorImage": "/images/large/brand/gaf_brand_thumb.jpg",
+    "shortDesc": null,
+    "categories": [
+      {
+        "facetId": "2136009155",
+        "categoryName": "3-Tab Shingles",
+        "categoryId": "CAT_RER_ASP_3TB"
+      },
+      {
+        "facetId": "2136009154",
+        "categoryName": "Asphalt Shingles",
+        "categoryId": "CAT_RER_ASP"
+      },
+      {
+        "facetId": "2136009153",
+        "categoryName": "Residential Roofing",
+        "categoryId": "CAT_RER"
+      }
+    ],
+    "brand": "GAF",
+    "longDesc": "<p>Some people think all 3-tab shingles look pretty much alike. Not so! At GAF, we've gone to great pains to make Royal Sovereign&reg; Shingles the most beautiful strip shingles you can buy. But don't just take our word for it. Over 10 million Royal Sovereign&reg; Shingles have been installed in North America - enough to circle the Earth more than 200 times if they were laid end to end.</p>\n<ul>\n<li><b>High Performance:</b>Designed with Advanced Protection&reg; Shingle Technology, which reduces the use of natural resources while providing excellent protection for your home</li>\n<li>StainGuard&reg; protection applies only to shingles with StainGuard&reg;-labeled packaging</li>\n</ul>"
+  },
+  "skuList": [
+    {
+      "unitPrice": 0,
+      "itemNumber": "374189",
+      "swatchImage": "/images/large/374189_default_swatch.jpg",
+      "thumbImage": "/images/large/374189_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/374189_1_thumb.jpg"
+        },
+        {
+          "image": "/images/large/374189_3_thumb.jpg"
+        },
+        {
+          "image": "/images/large/374189_4_thumb.jpg"
+        },
+        {
+          "image": "/images/default_video.jpg",
+          "videoUrl": "/video/GAFRoyalSovereign.mp4"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Golden Cedar"
+        ],
+        "size": [
+          "12\" x 36\""
+        ],
+        "width": [
+          "12\""
+        ],
+        "length": [
+          "36\""
+        ]
+      },
+      "productNumber": "GAFRSDASGGC",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/374189_default_hero.jpg"
+    }
+  ],
+  "currentSKU": {
+    "unitPrice": 0,
+    "itemNumber": "374189",
+    "uomlist": null,
+    "productNumber": "GAFRSDASGGC",
+    "currentUOM": "BDL",
+    "skuShortDesc": null,
+    "itemImage": "/images/large/374189_default_hero.jpg",
+    "swatchImage": "/images/large/374189_default_swatch.jpg",
+    "thumbImage": "/images/large/374189_default_thumb.jpg",
+    "manufactureNumber": null,
+    "auxiliaryImages": [
+      {
+        "image": "/images/large/374189_1_thumb.jpg"
+      },
+      {
+        "image": "/images/large/374189_3_thumb.jpg"
+      },
+      {
+        "image": "/images/large/374189_4_thumb.jpg"
+      },
+      {
+        "image": "/images/default_video.jpg",
+        "videoUrl": "/video/GAFRoyalSovereign.mp4"
+      }
+    ],
+    "variations": {
+      "color": [
+        "Golden Cedar"
+      ],
+      "size": [
+        "12\" x 36\""
+      ],
+      "width": [
+        "12\""
+      ],
+      "length": [
+        "36\""
+      ]
+    },
+    "heroImages": [
+      {
+        "image": "/images/large/374189_default_hero.jpg"
+      },
+      {
+        "image": "/images/large/374189_1_hero.jpg"
+      },
+      {
+        "image": "/images/large/374189_3_hero.jpg"
+      },
+      {
+        "image": "/images/large/374189_4_hero.jpg"
+      }
+    ]
+  },
+  "resource": {
+    "ICC-ES Evaluation Report": "https://icc-es.org/wp-content/uploads/report-directory/ESR-1475.pdf",
+    "Residential Full Line Brochure": "https://www.gaf.com/en-us/document-library/documents/Brochure__GAF_Residential_Full_Line_Reference_Guide_RESGN100.pdf",
+    "Royal Sovereign Brochure": "https://www.gaf.com/en-us/document-library/documents/Brochure__Royal_Sovereign_RESRS110.pdf",
+    "Florida Product Approval": "https://www.floridabuilding.org/upload/PR_Tech_Docs/FL31588_R2_AE_2020_08_10_FINAL_ER_GAF_ASPHALT%20SHINGLES_FL31588-R1_HVHZ.pdf",
+    "Product Data Sheet": "https://www.gaf.com/en-us/document-library/documents/Data_Sheet__Royal_Sovereign_English.pdf",
+    "Safety Data Sheet (English)": "https://www.gaf.com/en-us/document-library/documents/SDS__Royal_Sovereign_Marquis_WeatherMax_and_Sentinel_Shingles_1003.pdf",
+    "Miami Dade NOA": "https://www.miamidade.gov/building/library/productcontrol/noa/22082504.pdf",
+    "Safety Data Sheet (French)": "https://www.gaf.com/en-us/document-library/documents/SDS__Royal_Sovereign_Marquis_WeatherMax_and_Sentinel_Shingles_1003_French.pdf",
+    "Product Specification Sheet": "https://www.gaf.com/en-us/document-library/documents/Specification__Royal_Sovereign_Shingles.doc",
+    "Advanced Protection Shingle Brochure": "https://www.gaf.com/en-us/document-library/documents/Brochure__Advanced_Protection_Shingles_RESGN147.pdf"
+  },
+  "callBackParam": null,
+  "variations": {
+    "color": {
+      "Golden Cedar": [
+        "374189"
+      ]
+    },
+    "size": {
+      "12\" x 36\"": [
+        "374189"
+      ]
+    }
+  },
+  "specification": {
+    "Length": "36\"",
+    "Bundles Per Square": "3",
+    "Applicable Standards": "ASTM D7158 (Class H)<br>\nASTM D3161,Class F<br>\nASTM D3018,Type 1<br>\nASTM D3462<br>\nUL 790, Class A<br>\nMiami-Dade County Approved<br>\nFlorida Building Code Approved FL10124-R12<br>\nUL 997 modified to 110 mph<br>\nICC ESR-1475, ESR-3267<br>\nTexas Department of Insurance Approved<br>\nEnergy Star\nTITLE 24<br>\nCRRC<br>\nLA GREEN BUILDING CODE",
+    "Wind Resistance": "60 Mph",
+    "Shingles Per Square": "79",
+    "Exposure": "5\" (127 mm)",
+    "Width": "12\"",
+    "Base Material": "Fiberglass Asphalt Construction"
+  },
+  "message": null
+}

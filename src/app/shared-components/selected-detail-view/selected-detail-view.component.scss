@@ -1,0 +1,13 @@
+tr.mat-row:nth-child(odd) {
+  background-color: #f8f8f8 !important;
+}
+
+// selected child
+tr.mat-row:first-child {
+  background-color: #025f9e !important;
+
+  td {
+    color: #fff !important;
+  }
+
+}

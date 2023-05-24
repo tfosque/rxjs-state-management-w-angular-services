@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
+import * as _ from 'lodash';
 
 @Component( {
   selector: 'app-add-product-modal-pilot',
@@ -8,12 +9,13 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./add-product-modal-pilot.component.scss']
 } )
 export class AddProductModalPilotComponent implements OnInit {
+  @ViewChild( 'scrollContainer', { static: true } ) scrollContainer: ElementRef | undefined;
   products = new BehaviorSubject<any>( [] );
   baseImgUrl = 'https://beaconproplus.com';
-  // https://static.becn.com/insecure/plain/images/large/C-734607_default_thumb.jpg
-  // https://beaconproplus.com/images/large/586865_default_thumb.jpg
-
   selectedModalProducts = new BehaviorSubject<any>( [] );
+  currSelection = new Subject();
+  scroll = new BehaviorSubject<boolean>( false );
+  panelOpenState = false;
 
   constructor(
     private readonly productsService: ProductsService
@@ -25,13 +27,34 @@ export class AddProductModalPilotComponent implements OnInit {
     console.log( 'products:', this.productsService.getSampleProducts() );
   }
 
-  addSelectedProduct( product: any ) {
-    const currSelProducts = this.selectedModalProducts.value;
-
-    // this.selectedModalProducts.next(product)
-    const updateSelProducts = { ...currSelProducts, product };
-    console.log( { updateSelProducts } );
+  getLastSelectedProduct() {
+    return _.last( this.selectedModalProducts.value ) || []
   }
 
+  selectProduct( product?: any ) {
+    this.currSelection.next( product );
+    // console.log( { product } );
+    const product336994 = this.productsService.Product336994Data;
+    // console.log( { product336994 } );
+
+    const currSelProducts = this.selectedModalProducts.value;
+
+    const updateSelProducts = [...currSelProducts, product];
+
+    this.selectedModalProducts.next( _.uniqBy( updateSelProducts, item => item.productId ) );
+
+    this.scrollContainer?.nativeElement.scrollTo( { top: 0, behavior: 'smooth' } );
+    this.panelOpenState = false;
+    return product || {}
+  }
+
+  getProduct336994() {
+    const product336994 = this.productsService.Product336994Data;
+    console.log( { product336994 } );
+  }
+
+  itemDetails_446323() {
+    this.productsService.Item4463Data;
+  }
 
 }

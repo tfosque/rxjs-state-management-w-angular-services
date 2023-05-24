@@ -394,6 +394,10 @@ export class HomeComponent implements OnInit {
     } );
   }
 
+  onDisplaySelProduct( selection: any ) {
+    //
+  }
+
 
   /* MISC */
   /*   getFullUrl( sku: string ) {
