@@ -28,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
 
 import { ImgErrDirective } from './directives/img-err.directive';
 import { SelectedDetailViewComponent } from './shared-components/selected-detail-view/selected-detail-view.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule( {
   declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective, SelectedDetailViewComponent],
   imports: [
@@ -48,7 +49,8 @@ import { SelectedDetailViewComponent } from './shared-components/selected-detail
     MatExpansionModule,
     MatBadgeModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatPaginatorModule
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],

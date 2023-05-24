@@ -63,11 +63,20 @@
 
 <!-- BUTTONS -->
 <mat-dialog-actions align="end" class="row">
-  <!--  <button mat-button mat-dialog-close color="basic">Cancel</button> -->
-  <div class="col-md-auto">
-    <button mat-button mat-raised-button style="text-transform: uppercase; background: orange; color: #fff"
-      [mat-dialog-close]="true" [disabled]="(selectedModalProducts | async)?.length === 0">
-      ADD PRODUCTS TO CART
-    </button>
+  <div class="">
+    <div class="row mx-2">
+      <div class="col-md-9">
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+      </div>
+      <div class="col-md-3" style="text-align: center">
+        <button mat-button mat-raised-button style="text-transform: uppercase; background: orange; color: #fff"
+          [mat-dialog-close]="true" [disabled]="(selectedModalProducts | async)?.length === 0">
+          ADD PRODUCTS TO CART
+        </button>
+      </div>
+    </div>
   </div>
+  <!--  <button mat-button mat-dialog-close color="basic">Cancel</button> -->
+
 </mat-dialog-actions>
