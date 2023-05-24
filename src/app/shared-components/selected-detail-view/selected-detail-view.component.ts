@@ -13,7 +13,7 @@ export class SelectedDetailViewComponent implements OnInit {
   displayedColumns = new BehaviorSubject<any>( [] );
   columnsToDisplay: any[] = [this.displayedColumns].slice();
   expandedElement: any | null;
-  @Input() panelOpenState = false;
+  @Input() panelOpenState: any = false;
   //   @Input() scroll: any = false;
   @Input() product: any = {};
   detailsInfo = new Subject();
@@ -38,6 +38,9 @@ export class SelectedDetailViewComponent implements OnInit {
 
   ngOnInit(): void {
     console.log( 'product:', this.product );
+    this.panelOpenState.subscribe( ( s: any ) => {
+      console.log( { s } );
+    } )
 
     // NOTE observable can be subscribe to as it is inherited 
     // map over to get table headers

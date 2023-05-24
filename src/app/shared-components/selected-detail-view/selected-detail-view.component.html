@@ -12,35 +12,47 @@
   </mat-expansion-panel> -->
   <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState" (closed)="panelOpenState">
     <mat-expansion-panel-header>
-      <mat-panel-title style="width: 100%"></mat-panel-title>
+      <mat-panel-title style="width: 100%">
+        <div class="col-md-auto" style="cursor: pointer; color: #025f9e">
+          <mat-icon (click)="clearProductDisplay()"> arrow_back</mat-icon>
+        </div>
+        <div class="col-md-auto" style="color: #c4c2c2">
+          <span> Back to Products</span>
+        </div>
+      </mat-panel-title>
       <mat-panel-description class="row">
         <!--  Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
+
+        <mat-action-row>
+          <div class="col-md-auto">
+            <button mat-button mat-raised-button color="primary" style="background: orange"
+              (click)="clearProductDisplay()">
+              Select Product
+            </button>
+          </div>
+        </mat-action-row>
       </mat-panel-description>
     </mat-expansion-panel-header>
+    <mat-divider></mat-divider>
 
     <div class="row">
-      <div class="col-md-1" style="cursor: pointer">
-        <mat-icon (click)="clearProductDisplay()"> arrow_back</mat-icon>
-      </div>
-      <div class="col-md-auto">
-        <span> Back to Products</span>
-      </div>
-      <div class="col-md-auto">
-        <button mat-button mat-raised-button color="primary" style="background: orange">
-          {{product.productId}} - Select Product
-        </button>
-      </div>
       <div class="col-md-12 my-1">
         <h2 class="mb-0" [innerHtml]="product.productName"></h2>
       </div>
       <div class="col-md-12 mt-1">
         <div class="row">
-          <div class="col-md-2"> <img width="88" [src]="baseImgUrl + product.productImage" [alt]="product.productId"
-              class="img-responsive">
+          <div class="col-md-4">
+            <img width="220" [src]="baseImgUrl + product.productImage" [alt]="product.productId" class="img-responsive">
           </div>
-          <div class="col-md-10">
-            <img *ngFor="let prod of [1,2,3,4,5,6,7,8,9,]" width="44"
-              [src]="baseSwatchUrl + product.skuList[0].swatchImage" [alt]="'C'" class="mx-1 my-1">
+          <div class="col-md-8">
+            <div>
+              <img *ngFor="let prod of [1,2,3,4,5,6,7,8,9,]" width="auto"
+                [src]="baseSwatchUrl + product.skuList[0].swatchImage" [alt]="'C'" class="img-responsive mx-1 my-1">
+            </div>
+            <div class="my-3">
+              <h3>Sku: {{product.productId}}</h3>
+              <h3>Color: </h3>
+            </div>
           </div>
         </div>
       </div>
@@ -59,7 +71,7 @@
                 The actual rendered columns are set as a property on the row definition" -->
       <!-- Column -->
       <ng-container *ngFor="let head of headers | async" [matColumnDef]="head">
-        <th mat-header-cell *matHeaderCellDef style="text-transform: capitalize;">z
+        <th mat-header-cell *matHeaderCellDef style="text-transform: capitalize;">
 
           {{head}}
         </th>

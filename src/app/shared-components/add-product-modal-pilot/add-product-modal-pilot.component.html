@@ -25,7 +25,7 @@
         <!-- CARD -->
         <div *ngIf="true" class="col-md-12 my-2">
           <app-selected-detail-view [hidden]="(selectedModalProducts | async)?.length === 0"
-            [panelOpenState]="panelOpenState" [scroll]="scroll"
+            [panelOpenState]="panelOpenState || false" [scroll]="scroll"
             [product]="currSelection | async"></app-selected-detail-view>
         </div>
 
@@ -37,7 +37,7 @@
               <div>{{item.brand}}</div>
               <img appImgErr [fallbackIMgSrc]="item.productOnErrorImage" mat-card-image
                 [src]="baseImgUrl + item.productImage" [alt]="item.productId" class="img-fluid">
-              <p>{{item.productName}}</p>
+              <p [innerHtml]="item.productName"></p>
             </mat-card-content>
             <div>{{item.productId}}</div>
           </mat-card>
@@ -67,7 +67,7 @@
   <div class="col-md-auto">
     <button mat-button mat-raised-button style="text-transform: uppercase; background: orange; color: #fff"
       [mat-dialog-close]="true" [disabled]="(selectedModalProducts | async)?.length === 0">
-      ADD SELECTED PRODUCTS TO CART
+      ADD PRODUCTS TO CART
     </button>
   </div>
 </mat-dialog-actions>

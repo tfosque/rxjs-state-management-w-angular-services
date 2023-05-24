@@ -15,11 +15,13 @@ export class AddProductModalPilotComponent implements OnInit {
   selectedModalProducts = new BehaviorSubject<any>( [] );
   currSelection = new Subject();
   scroll = new BehaviorSubject<boolean>( false );
-  panelOpenState = false;
+  panelOpenState = new BehaviorSubject<boolean>( false );
 
   constructor(
     private readonly productsService: ProductsService
-  ) { }
+  ) {
+    this.panelOpenState.next( false );
+  }
 
   ngOnInit(): void {
     this.products.next( this.productsService.getSampleProducts() );
@@ -34,17 +36,16 @@ export class AddProductModalPilotComponent implements OnInit {
   selectProduct( product?: any ) {
     this.currSelection.next( product );
     // console.log( { product } );
-    const product336994 = this.productsService.Product336994Data;
+    // const product336994 = this.productsService.Product336994Data;
     // console.log( { product336994 } );
 
     const currSelProducts = this.selectedModalProducts.value;
-
     const updateSelProducts = [...currSelProducts, product];
 
     this.selectedModalProducts.next( _.uniqBy( updateSelProducts, item => item.productId ) );
 
     this.scrollContainer?.nativeElement.scrollTo( { top: 0, behavior: 'smooth' } );
-    this.panelOpenState = false;
+    this.panelOpenState.next( true );
     return product || {}
   }
 
