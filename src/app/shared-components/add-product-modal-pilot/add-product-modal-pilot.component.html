@@ -1,7 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      <h2 mat-dialog-title>Find a Product 3756</h2>
+      <h2 mat-dialog-title style="display: inline-block">Find a Product</h2>
+      &nbsp;
+      <mat-chip-list #chipList2 style="display: inline-block">
+        <mat-chip [selectable]="true" [removable]="false" style="background: #247bb8; color: #fff">
+          {{'3756'}}
+        </mat-chip>
+      </mat-chip-list>
     </div>
     <div class="col-md-9">
       <div class="row">
@@ -47,15 +53,19 @@
 
     <!-- SIDEBAR -->
     <div class="col-md-3" style="border-right: dotted thin #e7e6e6">
-      <mat-selection-list role="list" #selections>
-        <mat-list-item> <span>Selected Items: <span
-              *ngIf="(selectedModalProducts | async)?.length > 0">{{(selectedModalProducts | async)?.length}}</span></span></mat-list-item>
-        <mat-list-option role="listoption"
-          *ngFor="let item of selectedModalProducts | async">{{item.productId}}</mat-list-option>
-      </mat-selection-list>
+
+      <div class="my-2">Selected Items:
+        <span *ngIf="(selectedModalProducts | async)?.length > 0">{{(selectedModalProducts | async)?.length}}
+        </span>
+      </div>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let item of selectedModalProducts | async" [selectable]="true" [removable]="false"
+          (removed)="removeChip(item)">
+          {{item.productId }}
+          <mat-icon matChipRemove *ngIf="true" (click)="clearProductDisplay(item)">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
     </div>
-
-
   </div>
 </mat-dialog-content>
 

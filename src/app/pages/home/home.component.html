@@ -144,12 +144,16 @@
 
 			<div class="row mt-3">
 				<!-- CTAS -->
-				<div class="col-md-auto"><button mat-raised-button color="secondary" disabled>Save All</button></div>
-				<div class="col-md-auto"><button mat-raised-button color="primary" (click)="openDialog()">ADD
-						Product</button></div>
-				<div class="col-md-auto"><button mat-raised-button color="primary">ADD Items to Cart</button></div>
-				<div class="col-md-auto"><button mat-raised-button color="light">Clear Quantity</button></div>
-				<div class="col-md-auto"><button mat-raised-button color="light">Copy Quote</button></div>
+				<div class="col-md-12">
+					<div class="row" style="margin: auto; width: 49vw">
+						<div class="col-md-auto"><button mat-raised-button color="secondary" disabled>Save All</button></div>
+						<div class="col-md-auto"><button mat-raised-button color="primary" (click)="openDialog()">ADD
+								Product</button></div>
+						<div class="col-md-auto"><button mat-raised-button color="primary">ADD Items to Cart</button></div>
+						<div class="col-md-auto"><button mat-raised-button color="light">Clear Quantity</button></div>
+						<div class="col-md-auto"><button mat-raised-button color="light">Copy Quote</button></div>
+					</div>
+				</div>
 
 				<!-- TABLE -->
 				<div class="col-md-12 mt-3 mb-5">
@@ -286,8 +290,8 @@
 						<li *ngFor="let item of mfgs">
 							<a *ngIf="item.hasOwnProperty('active')" class="dropdown-item" (click)="setSkuDisplayMFG(item)"
 								style="cursor: pointer; background-color: #fff; font-size: .825rem;">{{item[0]}}
-								<span *ngFor="let imgSku of item[1]" class="tip mx-1" data-bs-toggle="tooltip"
-									data-bs-placement="top" data-bs-title="Tooltip on top">
+								<span *ngFor="let imgSku of item[1]" class="tip mx-1" data-bs-toggle="tooltip" data-bs-placement="top"
+									data-bs-title="Tooltip on top">
 									<img width="18"
 										[src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
 										alt="">
@@ -316,8 +320,7 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
-							<a class="dropdown-item"
-								(click)="[setSkuDisplayColor(item), handleColorChange(item)]">{{item[0]}}</a>
+							<a class="dropdown-item" (click)="[setSkuDisplayColor(item), handleColorChange(item)]">{{item[0]}}</a>
 						</li>
 					</ul>
 				</div>

@@ -215,6 +215,10 @@ export class HomeComponent implements OnInit {
     return this.getMatches();
   }
 
+  removeChip() {
+    return;
+  }
+
   getMatches() {
     const getMatches: any = _.intersection( this.selectedMFG, this.skuDisplayColor );
     this.matches = getMatches;

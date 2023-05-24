@@ -58,4 +58,14 @@ export class AddProductModalPilotComponent implements OnInit {
     this.productsService.Item4463Data;
   }
 
+  clearProductDisplay( item: any ) {
+    const newItems = this.selectedModalProducts.value.filter( ( f: any ) => {
+      return f.productId !== item.productId;
+    } )
+    this.selectedModalProducts.next( newItems );
+  }
+  removeChip( item: any ) {
+    return;
+  }
+
 }
