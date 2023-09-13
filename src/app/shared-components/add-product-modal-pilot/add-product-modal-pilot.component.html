@@ -54,10 +54,7 @@
     <!-- SIDEBAR -->
     <div class="col-md-3" style="border-right: dotted thin #e7e6e6">
 
-      <div class="my-2">Selected Items:
-        <span *ngIf="(selectedModalProducts | async)?.length > 0">{{(selectedModalProducts | async)?.length}}
-        </span>
-      </div>
+      <div class="my-2">Selected Items:</div>
       <mat-chip-list #chipList>
         <mat-chip *ngFor="let item of selectedModalProducts | async" [selectable]="true" [removable]="false"
           (removed)="removeChip(item)">

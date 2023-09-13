@@ -109016,3 +109016,372 @@ export const Product336994 = {
   },
   "message": null
 }
+
+export const ItemDetailsResponse_438733 = {
+  "result": null,
+  "product": {
+    "itemNumber": "438733",
+    "skuList": null,
+    "productId": "C-413448",
+    "productOnErrorImage": "/images/large/brand/owens_corning_brand_small.jpg",
+    "relatedProducts": null,
+    "productName": "Owens Corning Oakridge&reg; Shingles Aged Cedar",
+    "url": null,
+    "internalProductName": "Oakridge&reg; Shingles",
+    "baseProductName": "Owens Corning Oakridge&reg; Shingles",
+    "manufactureNumber": "HK04",
+    "productImage": "/images/large/C-413448_default_small.jpg",
+    "productAdditionalOnErrorImage": "/images/large/brand/owens_corning_brand_thumb.jpg",
+    "shortDesc": null,
+    "categories": [
+      {
+        "facetId": "2136009155",
+        "categoryName": "3-Tab Shingles",
+        "categoryId": "CAT_RER_ASP_3TB"
+      },
+      {
+        "facetId": "2136009154",
+        "categoryName": "Asphalt Shingles",
+        "categoryId": "CAT_RER_ASP"
+      },
+      {
+        "facetId": "2136009153",
+        "categoryName": "Residential Roofing",
+        "categoryId": "CAT_RER"
+      }
+    ],
+    "brand": "Owens Corning",
+    "longDesc": "<p>Oakridge laminated shingles have a warm, inviting look in popular colors for a step up from traditional three-tab shingles. These shingles provide a unique blend of artistry and craftsmanship that will give your home a look that is anything but ordinary.</p>"
+  },
+  "skuList": [
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "366161",
+      "swatchImage": "/images/large/366161_default_swatch.jpg",
+      "thumbImage": "/images/large/366161_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/366161_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Estate Grey"
+        ]
+      },
+      "productNumber": "OCFDVO30EG",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366161_default_hero.jpg"
+    },
+    {
+      "unitPrice": 33,
+      "itemNumber": "292544",
+      "swatchImage": "/images/large/292544_default_swatch.jpg",
+      "thumbImage": "/images/large/292544_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Sierra Grey"
+        ]
+      },
+      "productNumber": "OCFDVO30SG",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/292544_default_hero.jpg"
+    },
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "366162",
+      "swatchImage": "/images/large/366162_default_swatch.jpg",
+      "thumbImage": "/images/large/366162_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Onyx Black"
+        ]
+      },
+      "productNumber": "OCFDVO30OB",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366162_default_hero.jpg"
+    },
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "366160",
+      "swatchImage": "/images/large/366160_default_swatch.jpg",
+      "thumbImage": "/images/large/366160_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/366160_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Driftwood"
+        ]
+      },
+      "productNumber": "OCFDVO30DW",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366160_default_hero.jpg"
+    },
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "366164",
+      "swatchImage": "/images/large/366164_default_swatch.jpg",
+      "thumbImage": "/images/large/366164_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Teak"
+        ]
+      },
+      "productNumber": "OCFDVO30TK",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366164_default_hero.jpg"
+    },
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "366159",
+      "swatchImage": "/images/large/366159_default_swatch.jpg",
+      "thumbImage": "/images/large/366159_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/366159_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Desert Tan"
+        ]
+      },
+      "productNumber": "OCFDVO30DT",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366159_default_hero.jpg"
+    },
+    {
+      "unitPrice": 33,
+      "itemNumber": "366170",
+      "swatchImage": "/images/large/366170_default_swatch.jpg",
+      "thumbImage": "/images/large/366170_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/366170_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Shasta White"
+        ]
+      },
+      "productNumber": "OCFDVO30SW",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366170_default_hero.jpg"
+    },
+    {
+      "unitPrice": 33,
+      "itemNumber": "438733",
+      "swatchImage": "/images/large/438733_default_swatch.jpg",
+      "thumbImage": "/images/large/438733_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/438733_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Aged Cedar"
+        ]
+      },
+      "productNumber": "OCFDVO30AAG",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/438733_default_hero.jpg"
+    },
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "438734",
+      "swatchImage": "/images/large/438734_default_swatch.jpg",
+      "thumbImage": "/images/large/438734_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Black Walnut"
+        ]
+      },
+      "productNumber": "OCFDVO30ABW",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/438734_default_hero.jpg"
+    },
+    {
+      "unitPrice": 33,
+      "itemNumber": "366155",
+      "swatchImage": "/images/large/366155_default_swatch.jpg",
+      "thumbImage": "/images/large/366155_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Amber"
+        ]
+      },
+      "productNumber": "OCFDVO30AM",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366155_default_hero.jpg"
+    },
+    {
+      "unitPrice": 33,
+      "itemNumber": "438735",
+      "swatchImage": "/images/large/438735_default_swatch.jpg",
+      "thumbImage": "/images/large/438735_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/438735_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Flagstone"
+        ]
+      },
+      "productNumber": "OCFDVO30AFG",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/438735_default_hero.jpg"
+    },
+    {
+      "unitPrice": 43.35,
+      "itemNumber": "366157",
+      "swatchImage": "/images/large/366157_default_swatch.jpg",
+      "thumbImage": "/images/large/366157_default_thumb.jpg",
+      "auxiliaryImages": null,
+      "variations": {
+        "color": [
+          "Brownwood"
+        ]
+      },
+      "productNumber": "OCFDVO30BW",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/366157_default_hero.jpg"
+    },
+    {
+      "unitPrice": 33,
+      "itemNumber": "438736",
+      "swatchImage": "/images/large/438736_default_swatch.jpg",
+      "thumbImage": "/images/large/438736_default_thumb.jpg",
+      "auxiliaryImages": [
+        {
+          "image": "/images/large/438736_1_thumb.jpg"
+        }
+      ],
+      "variations": {
+        "color": [
+          "Peppermill Grey"
+        ]
+      },
+      "productNumber": "OCFDVO30APG",
+      "currentUOM": "BDL",
+      "skuShortDesc": null,
+      "itemImage": "/images/large/438736_default_hero.jpg"
+    }
+  ],
+  "currentSKU": {
+    "unitPrice": 33,
+    "itemNumber": "438733",
+    "uomlist": null,
+    "productNumber": "OCFDVO30AAG",
+    "currentUOM": "BDL",
+    "skuShortDesc": null,
+    "itemImage": "/images/large/438733_default_hero.jpg",
+    "swatchImage": "/images/large/438733_default_swatch.jpg",
+    "thumbImage": "/images/large/438733_default_thumb.jpg",
+    "manufactureNumber": "HK04",
+    "auxiliaryImages": [
+      {
+        "image": "/images/large/438733_1_thumb.jpg"
+      }
+    ],
+    "variations": {
+      "color": [
+        "Aged Cedar"
+      ]
+    },
+    "heroImages": [
+      {
+        "image": "/images/large/438733_default_hero.jpg"
+      },
+      {
+        "image": "/images/large/438733_1_hero.jpg"
+      }
+    ]
+  },
+  "resource": {
+    "Product Specification Guide": "https://dcpd6wotaa0mb.cloudfront.net/mdms/dms/Roofing/10021602/10021602-Fiberglass-Based-Asphalt-Shingles-and-Accessories-Guide-Specifications.pdf",
+    "PRI Evaluation Report": "https://dcpd6wotaa0mb.cloudfront.net/mdms/dms/Roofing/10024329/10024329-PRI-Evaluation-Report---PRI-ER-1378E01-Asphalt-Shingles.pdf",
+    "Installation Instructions": "https://dcpd6wotaa0mb.cloudfront.net/mdms/dms/Roofing/10003280/10003280-Oakridge-and-TruDefinition-Oakridge-Install-Instructions.pdf",
+    "Florida Product Approval": "https://www.floridabuilding.org/upload/PR_Tech_Docs/FL10674_R18_AE_2022_02_03_FINAL_ER_OC_ASPHALT%20SHINGLES_FL10674-R18.pdf",
+    "Product Data Sheet": "https://dcpd6wotaa0mb.cloudfront.net/mdms/dms/Roofing/10024153/10024153-Oakridge-Brochure---BVLE-MED-MINN-SUM-KEA-IRV-MEM.pdf"
+  },
+  "callBackParam": null,
+  "variations": {
+    "color": {
+      "Amber": [
+        "366155"
+      ],
+      "Flagstone": [
+        "438735"
+      ],
+      "Onyx Black": [
+        "366162"
+      ],
+      "Desert Tan": [
+        "366159"
+      ],
+      "Shasta White": [
+        "366170"
+      ],
+      "Sierra Grey": [
+        "292544"
+      ],
+      "Estate Grey": [
+        "366161"
+      ],
+      "Aged Cedar": [
+        "438733"
+      ],
+      "Brownwood": [
+        "366157"
+      ],
+      "Peppermill Grey": [
+        "438736"
+      ],
+      "Black Walnut": [
+        "438734"
+      ],
+      "Driftwood": [
+        "366160"
+      ],
+      "Teak": [
+        "366164"
+      ]
+    }
+  },
+  "specification": {
+    "Area": "98.4 Sq. Ft.",
+    "Bundles Per Square": "3",
+    "Nominal Size": "13-1/4\" x 39-3/8\"",
+    "Applicable Standards": "ASTM D228<br>\nASTM D3018 (Type 1)<br>\nASTM D3462<br>\nASTM D3161 (Class F Wind Resistance)<br>\nASTM D7158 (Class H Wind Resistance)<br>\nASTM E108/UL 790 (Class A Fire Resistance)<br>\nICC-ES AC438<br>\nUL ER2453-01<br>\nLEED<br>\nMiami-Dade County Approved<br>\nFlorida Building Code Approved",
+    "Wind Resistance": "110 to 130 Mph (117 to 209 Kmph)",
+    "Algae Resistance": "25 Year",
+    "Shingles Per Square": "64",
+    "Warranty Length": "Limited Lifetime Warranty",
+    "Exposure": "5-5/8\""
+  },
+  "message": null
+}

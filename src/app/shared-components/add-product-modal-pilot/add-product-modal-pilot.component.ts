@@ -17,11 +17,10 @@ export class AddProductModalPilotComponent implements OnInit {
   scroll = new BehaviorSubject<boolean>( false );
   panelOpenState = new BehaviorSubject<boolean>( false );
 
+
   constructor(
     private readonly productsService: ProductsService
-  ) {
-    this.panelOpenState.next( false );
-  }
+  ) { this.panelOpenState.next( false ); }
 
   ngOnInit(): void {
     this.products.next( this.productsService.getSampleProducts() );

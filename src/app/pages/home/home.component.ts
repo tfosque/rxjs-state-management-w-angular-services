@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { currSkuData_407754, Large_Template as templateData } from './currentSkuData';
 import { AddProductModalPilotComponent } from 'src/app/shared-components/add-product-modal-pilot/add-product-modal-pilot.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductsService } from 'src/app/services/products.service';
 /* TODO */
 // How do we get default or current sku selections
 // 
@@ -48,6 +49,8 @@ export class HomeComponent implements OnInit {
     { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 231, qty: 3, del: '' },
     { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 123.5, qty: 1, del: '' },
   ]
+  /*  */
+  itemDetails_438733 = this.productsService.ItemDetailsResponse_p438733;
   sampleDataSrc1: any = templateData;
   currentSkuData = currSkuData_407754;
   /*  */
@@ -81,8 +84,11 @@ export class HomeComponent implements OnInit {
   selectedSkuColor: any = ['Acadia(750)', ['555291']];
   selectedSkuMfg: any = ['A.B. Seam', ['22718']];
   constructor(
-    public dialogComp: MatDialog ) {
-    console.log( 'sampleDataSrc1', this.sampleDataSrc1.templateItems );
+    public dialogComp: MatDialog,
+    private readonly productsService: ProductsService
+  ) {
+    console.log( 'sampleDataSrc1:Array', this.sampleDataSrc1.templateItems );
+    console.log( 'ItemDetails:438733', this.productsService.ItemDetailsResponse_p438733 );
   }
 
   ngOnInit(): void {
@@ -99,10 +105,10 @@ export class HomeComponent implements OnInit {
     const baseVariations = { MFG: this.objectMFG, COLOR: this.objectColor };
 
     /* sort */
-    const sortCurrSkuMFG = this.sortList( currSkuMFG );
-    const sortCurrSkuCOLOR = this.sortList( currSkuCOLOR );
-    const baseVariationsMFG = this.sortList( Object.entries( baseVariations.MFG ) );
-    const baseVariationsCOLOR = this.sortList( Object.entries( baseVariations.COLOR ) );
+    const sortCurrSkuMFG_simple_array = this.sortList( currSkuMFG );
+    const sortCurrSkuCOLOR_simple_array = this.sortList( currSkuCOLOR );
+    const baseVariationsMFG_Array = this.sortList( Object.entries( baseVariations.MFG ) );
+    const baseVariationsCOLOR_Array = this.sortList( Object.entries( baseVariations.COLOR ) );
 
     /* LOG */
     /*  console.group();
@@ -113,25 +119,46 @@ export class HomeComponent implements OnInit {
      console.log( { baseVariations } );
      console.groupEnd(); */
     /*  */
-    /*  console.group();
-     console.log( { sortCurrSkuMFG } );
-     console.log( { sortCurrSkuCOLOR } );
-     console.log( { baseVariationsMFG } );
-     console.log( { baseVariationsCOLOR } );
-     console.groupEnd(); */
+    console.group();
+    console.log( { sortCurrSkuMFG_simple_array } );
+    console.log( { sortCurrSkuCOLOR_simple_array } );
+    console.log( { baseVariationsMFG_Array } );
+    console.log( { baseVariationsCOLOR_Array } );
+    console.groupEnd();
     /*  */
 
     // first return the matching skus from base MFG(808) and currSkuMFG(39)
-    const tagAsMatch = sortCurrSkuMFG
+    const tagAsMatch = sortCurrSkuMFG_simple_array
       .map( ( currSku: any, index: number ) => {
         // console.log( 'baseVariations[MFG][entries]:', baseVariations['MFG'].hasOwnProperty( currSku ) ? baseVariations['MFG'][currSku] : null )
-        return baseVariations['MFG'].hasOwnProperty( currSku ) ? { name: currSku, skus: baseVariations['MFG'][currSku], active: true } : null
+        return baseVariations['MFG'].hasOwnProperty( currSku )
+          ? { name: currSku, skus: baseVariations['MFG'][currSku], active: true }
+          : null
       } );
     console.log( { tagAsMatch } );
     /* END CURR SKU DATA */
   }
 
   /* Custom Methods */
+
+  sizeInput( varType: string ): string {
+    /* returning width
+      variationType === 'packaging' ? '158px' : variationType === 'color' ? '240px' : 
+      variationType === 'MFG' ? '240px' : variationType === 'diameter' ? '130px' : 
+      variationType === 'size' ? '110px' : '90px'	
+    */
+    let styl = '';
+    if ( varType === 'packaging' ) {
+      styl = '158px'
+    } else if ( varType === 'color' ) {
+      styl = '198px'
+    } else if ( varType === 'MFG' ) {
+      styl = '240px'
+    } else if ( varType === 'diameter' ) {
+      styl = '130px'
+    }
+    return styl;
+  }
   initializeDropdowns() {
     this.populateDefaultVariations();
 
