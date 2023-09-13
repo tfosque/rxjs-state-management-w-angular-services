@@ -138,14 +138,11 @@
 			</ul>
 		</div>
 
-		<!-- PAGE Title -->
+		<!-- TABLE -->
 		<div class="col-md-9" style="text-transform: uppercase;">
-
 			<div class="row mt-3">
-
-				<!-- TABLE -->
-				<div class="col-md-12 mt-1 mb-5">
-					<table mat-table [dataSource]="sampleDataSrc1?.templateItems" class="mat-elevation-z8">
+				<div class="col-md-12 mt-1 mb-1">
+					<table mat-table [dataSource]="[sampleDataSrc1?.templateItems[1]]" class="mat-elevation-z8">
 						<!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
 
@@ -159,10 +156,10 @@
 						<ng-container matColumnDef="product">
 							<th mat-header-cell *matHeaderCellDef style="text-align: center"> Product </th>
 							<td mat-cell *matCellDef="let element" style="text-align: center">
-								<div style="font-size: .75rem;">{{element.itemNumber}}</div>
 								<img width="71"
 									[src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
 									[alt]="element.itemNumber">
+								<div style="font-size: .85rem;">#{{element.itemNumber}}</div>
 							</td>
 						</ng-container>
 
@@ -170,33 +167,31 @@
 						<ng-container matColumnDef="details">
 							<th mat-header-cell *matHeaderCellDef> Details </th>
 							<td mat-cell *matCellDef="let element">
+
 								<div class="row">
 									<!-- NICKNAME -->
-									<form class="col-md-3 mt-2" style="width: auto;">
-										<mat-form-field style="width: 138px;">
-											<mat-label style="text-transform: capitalize">Nickname</mat-label>
-											<input matInput [value]="element.nickname || ''">
-										</mat-form-field>
-									</form>
-									<h3 class="col-md-12 mb-1">{{ element.itemOrProductDescription}}</h3>
+									<mat-form-field class="col-md-3" style="width: 138px;">
+										<mat-label style="text-transform: capitalize">Nickname</mat-label>
+										<input matInput [value]="element.nickname || ''">
+									</mat-form-field>
+									<!-- DESC -->
+									<h3 class="col-md-12 my-0">{{ element.itemOrProductDescription }}</h3>
 
 									<!-- VARIATIONS -->
-									<div class="col-auto my-2"
+									<div class="col-auto"
 										*ngFor="let variationType of element.multiVariationData?.allVariationTypes; let i = index">
-										<div class="cell medium-shrink">
-											<mat-form-field appearance="standard" style="font-size: .825rem; width: 122px"
-												[ngStyle]="{ 'width': sizeInput(variationType)	}">
-												<mat-label class="input-label"
-													style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
-												<mat-select (selectionChange)="doSomething($event, element, variationType)"
-													[value]="element.multiVariationData?.currentVariations[variationType]">
-													<mat-option
-														*ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"
-														[value]="dd">
-														{{ dd  }}</mat-option>
-												</mat-select>
-											</mat-form-field>
-										</div>
+										<mat-form-field appearance="standard" style="font-size: .825rem;"
+											[ngStyle]="{ 'width': sizeInput(variationType)	}">
+											<mat-label class="input-label"
+												style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
+											<mat-select (selectionChange)="doSomething($event, element, variationType)"
+												[value]="element.multiVariationData?.currentVariations[variationType]">
+												<mat-option
+													*ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"
+													[value]="dd">
+													{{ dd  }}</mat-option>
+											</mat-select>
+										</mat-form-field>
 									</div>
 								</div>
 							</td>
@@ -204,21 +199,17 @@
 
 						<!-- Price Column -->
 						<ng-container matColumnDef="price">
-							<th mat-header-cell *matHeaderCellDef> Price </th>
-							<td mat-cell *matCellDef="let element"> {{element.unitPrice | currency }} /
-								{{element.unitOfMeasure}}
-							</td>
-						</ng-container>
-
-						<!-- Qty Column -->
-						<ng-container matColumnDef="qty">
-							<th mat-header-cell *matHeaderCellDef> Qty </th>
+							<th mat-header-cell *matHeaderCellDef> Price/ QTY </th>
 							<td mat-cell *matCellDef="let element">
-								<form>
-									<mat-form-field style="width: 50px">
-										<input type="number" min="1" max="999" matInput [value]="element.quantity ">
-									</mat-form-field>
-								</form>
+								<div>{{element.unitPrice | currency }} / {{element.unitOfMeasure}}</div>
+								<div>
+									<form style="text-align: center;">
+										<mat-form-field style="width: 50px">
+											<input type="number" min="1" max="999" matInput [value]="element.quantity ">
+										</mat-form-field>
+									</form>
+								</div>
+								<div style="font-size: .8rem">Availabililty for PickUp or Delivery</div>
 							</td>
 						</ng-container>
 
@@ -229,10 +220,48 @@
 							</td>
 						</ng-container>
 
-						<tr mat-header-row *matHeaderRowDef="['select','product', 'details', 'price', 'qty', 'del' ]"></tr>
-						<tr mat-row *matRowDef="let row; columns: ['select','product', 'details', 'price', 'qty', 'del' ];">
+						<tr mat-header-row *matHeaderRowDef="['select','product', 'details', 'price', 'del' ]"></tr>
+						<tr mat-row *matRowDef="let row; columns: ['select','product', 'details', 'price', 'del' ];">
 						</tr>
 					</table>
+				</div>
+
+
+
+				<!-- RESULT -->
+				<div class="row mt-3">
+					<!-- <div style="width: 1%"></div> -->
+					<!--  -->
+					<div class="col-6">
+						<ul class="list-group">
+							<li class="list-group-item active" style="background: #025f9e">MFG</li>
+							<li class="list-group-item" *ngFor="let item of getItemVariations(
+									sampleDataSrc1?.templateItems[1].multiVariationData?.variations, 'MFG')">
+								<!-- getItemVariations([sampleDataSrc1?.templateItems[1].multiVariationData?.variations, 'MFG')" -->
+								{{item}}
+							</li>
+
+						</ul>
+					</div>
+					<div class="col-6">
+						<ul class="list-group">
+							<li class="list-group-item active" style="background: #025f9e">COLOR: Target Sku = {{40775}}</li>
+							<!--  -->
+							<li class="list-group-item" *ngFor="let item of buildDropDownsQuick(
+								sampleDataSrc1?.templateItems[1].multiVariationData?.variations, 'color')"
+								[ngStyle]="{'background': item.sku === '40775' ? '#025f9e' : ''}">
+								<div class="row">
+									<div class="col-8">
+										<div [ngStyle]="{'color': item.sku === '40775' ? '#fff' : 'black'}">{{item.color}}</div>
+									</div>
+									<div class="col-2" [ngStyle]="{'color': item.sku === '40775' ? '#fff' : 'black'}">{{item.sku}}</div>
+									<div class="col-2"><img
+											[src]="'https://beaconproplus.com/images/large/' + item.sku + '_default_swatch.jpg'" alt=""></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
 		</div>

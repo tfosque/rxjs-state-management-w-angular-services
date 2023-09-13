@@ -93,6 +93,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.initializeDropdowns();
+    console.group( 'sampleProduct' );
+    const sampleProduct = this.sampleDataSrc1.templateItems[1];
+    console.log( { sampleProduct } )
+    console.groupEnd();
 
     /* CUURENT SKU DATA */
     // currSku variations has shorter list of mfgs and colors but name only
@@ -119,12 +123,12 @@ export class HomeComponent implements OnInit {
      console.log( { baseVariations } );
      console.groupEnd(); */
     /*  */
-    console.group();
-    console.log( { sortCurrSkuMFG_simple_array } );
-    console.log( { sortCurrSkuCOLOR_simple_array } );
-    console.log( { baseVariationsMFG_Array } );
-    console.log( { baseVariationsCOLOR_Array } );
-    console.groupEnd();
+    /*  console.group();
+     console.log( { sortCurrSkuMFG_simple_array } );
+     console.log( { sortCurrSkuCOLOR_simple_array } );
+     console.log( { baseVariationsMFG_Array } );
+     console.log( { baseVariationsCOLOR_Array } );
+     console.groupEnd(); */
     /*  */
 
     // first return the matching skus from base MFG(808) and currSkuMFG(39)
@@ -135,7 +139,7 @@ export class HomeComponent implements OnInit {
           ? { name: currSku, skus: baseVariations['MFG'][currSku], active: true }
           : null
       } );
-    console.log( { tagAsMatch } );
+    // console.log( { tagAsMatch } );
     /* END CURR SKU DATA */
   }
 
@@ -389,15 +393,36 @@ export class HomeComponent implements OnInit {
       // console.log( { sum } );
       return sum;
   } */
-  getItemVariations( data: any, index: any ) {
-    // console.log( { data }, { index } );
-    const list = data[index];
-    // console.log( { list } );
+  getItemVariations( data: any, varType: any ) {
+    // console.log( { data }, { varType } );
+    const list = data[varType];
     const KEYS = Object.keys( list );
-    if ( index === 'color' ) {
-      // console.log( { KEYS } )
+    // 
+    // this.buildDropDownsQuick( data, varType )
+    return KEYS.sort();
+  }
+  buildDropDownsQuick( data: any, varType: any ): any {
+    // console.log( { data }, { index } );
+    const list = data[varType];
+    const KEYS = Object.keys( list );
+
+    const dataArray = Object.entries( data ).map( ( k: any ) => {
+      return Object.entries( k[1] ).map( ( i: any ) => {
+        // console.log( { i } )
+        return { [k[0]]: i[0], sku: i[1][0] }
+      } )
+    } )
+    //'
+    if ( varType === 'MFG' ) {
+      // console.log( _.sortBy( dataArray[1], 'MFG' ) )
+      return _.sortBy( dataArray[1], 'MFG' )
     }
-    return KEYS;
+    if ( varType === 'color' ) {
+      // console.log( _.sortBy( dataArray[0], 'color' ) )
+      return _.sortBy( dataArray[0], 'color' );
+    }
+    // return KEYS.sort();
+    return []
   }
 
 
