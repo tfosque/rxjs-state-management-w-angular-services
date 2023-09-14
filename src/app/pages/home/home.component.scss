@@ -2,6 +2,14 @@
   overflow: hidden;
 }
 
+#col-line-item {
+
+  div.col-7,
+  div.col-3 {
+    padding-top: 6px;
+  }
+}
+
 small {
   display: none;
 }

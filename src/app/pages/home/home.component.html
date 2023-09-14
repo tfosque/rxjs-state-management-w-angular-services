@@ -75,17 +75,18 @@
 												</li>
 												<!-- items -->
 												<li class="list-group-item" *ngFor="let item of buildDropDownsQuick(
-							sampleDataSrc1?.templateItems[targetItemNumber].multiVariationData?.variations, variationType)">
-													<div class="row">
+							sampleDataSrc1?.templateItems[targetItemNumber].multiVariationData?.variations, variationType)"
+													[ngStyle]="{background: item.sku === element.itemNumber ? '#025f9e' : ''}">
+													<div class="row" [id]="variationType === 'color' ? 'col-line-item' : ''">
 														<div class="col-7">
-															<div [ngStyle]="{variationType: item.sku === '556021' ? '#fff' : 'black'}">
+															<div [ngStyle]="{color: item.sku === element.itemNumber ? '#fff' : 'black'}">
 																{{item[variationType]}}
 															</div>
 														</div>
-														<div class="col-3" [ngStyle]="{variationType: item.sku === '556021' ? '#fff' : 'black'}">
+														<div class="col-3" [ngStyle]="{color: item.sku === element.itemNumber ? '#fff' : 'black'}">
 															{{item.sku}}
 														</div>
-
+														<!-- thumbnail -->
 														<div class="col-2" *ngIf="variationType === 'color'"><img
 																[src]="'https://beaconproplus.com/images/large/' + item.sku + '_default_swatch.jpg'"
 																alt=""></div>

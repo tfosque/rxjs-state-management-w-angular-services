@@ -17,7 +17,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./home.component.scss']
 } )
 export class HomeComponent implements OnInit {
-  targetItemNumber = 26;
+  targetItemNumber = 0;
 
   folders: any[] = [
     {
@@ -145,8 +145,9 @@ export class HomeComponent implements OnInit {
   }
 
   handleDropdown( val: any ) {
-    console.log( val );
-    const indx = this.sampleDataSrc1.templateItems.find( ( f: any, index: number ) => { } )
+    const indx = this.sampleDataSrc1.templateItems.findIndex( ( f: any ) => f.itemNumber === val );
+    this.targetItemNumber = indx;
+    // console.log( { indx } );
   }
 
   /* Custom Methods */
