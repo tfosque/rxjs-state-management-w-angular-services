@@ -1,337 +1,109 @@
-<div class="container-fluid">
-
-	<!-- skuDisplays -->
-	<div class="row mt-3" *ngIf="false">
-		<div class="col-md-12">
-			<div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
-				<!-- Mfg Skus -->
-				<h4> Selected MFG Skus: <span style="color: #6b5b3f">{{ mfgSelection[0] }}</span>
-					<br>
-					<div *ngFor="let item of selectedMFG" style="display: inline; padding: 4px 4px;">
-						<span *ngIf="!highlightMatch(item)"> {{item}} |</span>
-						<mark *ngIf="highlightMatch(item)">{{item}} |</mark>
-					</div>
-				</h4>
-
-				<hr>
-				<!-- Color Skus -->
-				<h4>
-					Selected COLOR Skus: <span style="color: #6b5b3f">{{ colorSelection[0] }}</span>
-					<div *ngFor="let item of skuDisplayColor">
-						<span *ngIf="!highlightMatch(item)"> {{item}} |</span>
-						<mark *ngIf="highlightMatch(item)">{{item}} |</mark>
-					</div>
-				</h4>
-			</div>
-		</div>
+<div class="row" style="margin: 30px 0 30px 0; display: inline-block;">
+	<div class="col-md-12">
+		<h1 class="mb-2"
+			style="font-size: 2em; color: #025f9e; font-size: 2.25em; font-weight: bold; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
+			Variations Exercise:</h1>
 	</div>
+	<!--  -->
+	<div class="col"> <mat-divider></mat-divider></div>
 
-
-	<!-- Show All Skus -->
-	<div class="row mt-3" *ngIf="false">
-		<div class="col-md-12">
-			<div [ngClass]="{'alert-success': matches.length}" class="alert alert-secondary" role="alert">
-				<!-- Mfg Skus -->
-				<h4 class="mb-3"> <b>({{ allMatches.length }}) Matching MFG Skus: <span
-							style="color: #6b5b3f">{{ mfgSelection[0] }}</span></b> <input type="checkbox"
-						*ngIf="false; else checkbox">
-					<!--  <p *ngFor="let item of allMatches" style="display: inline; padding: 4px 4px;">
-            <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
-            <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
-          </p> -->
-				</h4>
-				<div *ngFor="let item of allMatches">
-					<h4 class="mb-1">
-						{{item[0]}}
-					</h4>
-
-					<ng-container *ngFor="let sku of item[1]">
-						<button *ngIf="hasSku(sku, item[1])" class="btn btn-sm btn-outline-dark"
-							style="margin: 2px 4px 4px 0px; min-width: 80px;">
-							<!--  <span *ngIf="!highlightMatch(sku)"> {{sku}} |</span>
-              <mark *ngIf="highlightMatch(sku)">{{sku}} |</mark> -->
-							{{sku}}
-							<br>
-
-							<img *ngIf="showTiles | async" style="border-radius: 6px; width: 60px; height: 60px"
-								[src]="'https://static.becn.com/insecure/plain/images/large/' + sku + '_default_small.jpg'"
-								class="img-rounded" [alt]="sku">
-						</button>
-					</ng-container>
-					<hr>
-				</div>
-				<!-- Color Skus -->
-				<!-- <h4> <b>Selected COLOR Skus:</b>
-          <div style="color: #6b5b3f">{{ colorSelection[0] }}</div>
-          <p *ngFor="let item of skuDisplayColor">
-            <span *ngIf="!highlightMatch(item)"> {{item}} |</span>
-            <mark *ngIf="highlightMatch(item)">{{item}} |</mark>
-          </p>
-        </h4> -->
-			</div>
-		</div>
-	</div>
-</div>
-
-
-<div class="container mt-5">
-	<div class="row my-3">
-
-		<div class="col-md-3">
-
-		</div>
-		<div class="col-md-9">
-			<h1 class="mb-2"
-				style="font-size: 2em; color: #025f9e; font-size: 2.25em; font-weight: bold; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
-				Template Details:</h1>
-			<!--  -->
-			<div class="col mb-3"> <mat-divider></mat-divider></div>
-
-			<!-- CTAS -->
-			<div style="text-align:center">
-				<div class="row" style="margin: auto; width: 45vw">
-					<div class="col-md-auto"><button mat-raised-button color="secondary" disabled>Save All</button></div>
-					<div class="col-md-auto"><button mat-raised-button color="primary" (click)="openDialog()">ADD
-							Product</button></div>
-					<div class="col-md-auto"><button mat-raised-button color="primary">ADD Items to Cart</button></div>
-					<div class="col-md-auto"><button mat-raised-button color="light">Clear Quantity</button></div>
-					<div class="col-md-auto"><button mat-raised-button color="light">Copy Quote</button></div>
-				</div>
-			</div>
-		</div>
-
-		<!-- SIDEMENU -->
-		<div class="col-md-3 mt-4">
-			<ul class="list-group">
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">account_circle</mat-icon> My
-						Profile</span>
-				</li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">lock</mat-icon> Change
-						Password</span></li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">bookmark</mat-icon>Address
-						Book</span>
-				</li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">supervisor_account</mat-icon>
-						Accounts</span></li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">list</mat-icon> Order
-						History</span></li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">attach_money</mat-icon>
-						Quotes</span></li>
-				<li class="list-group-item" style="background: #ececec"> <span><mat-icon
-							style="color: #025f9ed1">check_circle</mat-icon> Templates</span>
-				</li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">format_align_justify</mat-icon>
-						Save
-						Orders</span></li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">access_time</mat-icon> Pending
-						Orders</span>
-				</li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">supervisor_account</mat-icon> User
-						Administration</span>
-				</li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">location_searching</mat-icon>
-						Delivery
-						Tracking</span>
-				</li>
-				<li class="list-group-item"><span><mat-icon style="color: #025f9ed1">logout</mat-icon> Logout</span>
-				</li>
-			</ul>
-		</div>
-
-		<!-- TABLE -->
-		<div class="col-md-9" style="text-transform: uppercase;">
-			<div class="row mt-3">
-				<div class="col-md-12 mt-1 mb-1">
-					<table mat-table [dataSource]="[sampleDataSrc1?.templateItems[1]]" class="mat-elevation-z8">
-						<!--- Note that these columns can be defined in any order.
+	<!-- TABLE -->
+	<div class="col-md-12" style="text-transform: uppercase;">
+		<div class="row mt-3">
+			<div class="col-md-12 mt-1 mb-1">
+				<table mat-table [dataSource]="[sampleDataSrc1?.templateItems[targetItemNumber]]" class="mat-elevation-z8;"
+					style="width: 100%">
+					<!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
 
-						<!-- Select Column -->
-						<ng-container matColumnDef="select">
-							<th mat-header-cell *matHeaderCellDef> </th>
-							<td mat-cell *matCellDef="let element"> <mat-checkbox></mat-checkbox> </td>
-						</ng-container>
+					<!-- Avail Skus dropdown -->
+					<ng-container matColumnDef="details">
+						<th mat-header-cell *matHeaderCellDef>
+							<span class="p-3 pb-0 pt-0">
+								<mat-form-field appearance="fill">
+									<mat-label> Available Skus</mat-label>
+									<mat-select #sel id="sel" value="" (selectionChange)="handleDropdown(sel.value)">
+										<mat-option *ngFor="let i of this.sampleDataSrc1.templateItems" [value]="i.itemNumber">
+											{{i.itemNumber}}
+										</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</span>
+						</th>
+						<!-- DESC -->
+						<td mat-cell *matCellDef="let element">
+							<div class="row">
+								<div class="col-1" style="text-align: center">
+									<img width="100%" style="padding-top: 15px;"
+										[src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
+										[alt]="element.itemNumber">
+									<div>#{{element.itemNumber}}</div>
+								</div>
+								<h3 class="col-md-9 mt-3 mb-0" style="padding-left: 0; font-size: 1.5rem;">
+									{{ element.itemOrProductDescription }}
+								</h3>
 
-						<!-- Product Column -->
-						<ng-container matColumnDef="product">
-							<th mat-header-cell *matHeaderCellDef style="text-align: center"> Product </th>
-							<td mat-cell *matCellDef="let element" style="text-align: center">
-								<img width="71"
-									[src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
-									[alt]="element.itemNumber">
-								<div style="font-size: .85rem;">#{{element.itemNumber}}</div>
-							</td>
-						</ng-container>
-
-						<!-- DETAILS Column -->
-						<ng-container matColumnDef="details">
-							<th mat-header-cell *matHeaderCellDef> Details </th>
-							<td mat-cell *matCellDef="let element">
-
-								<div class="row">
-									<!-- NICKNAME -->
-									<mat-form-field class="col-md-3" style="width: 138px;">
-										<mat-label style="text-transform: capitalize">Nickname</mat-label>
-										<input matInput [value]="element.nickname || ''">
+								<!-- VARIATIONS -->
+								<div class="col-3"
+									*ngFor="let variationType of element.multiVariationData?.allVariationTypes; let i = index">
+									<mat-form-field appearance="standard" style="font-size: .825rem;" [ngStyle]="{ 'width': '306px'	}">
+										<mat-label class="input-label" style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
+										<mat-select (selectionChange)="doSomething($event, element, variationType)"
+											[value]="element.multiVariationData?.currentVariations[variationType]" style="font-size: 1.25rem">
+											<mat-option
+												*ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"
+												[value]="dd">
+												{{ dd  }}</mat-option>
+										</mat-select>
 									</mat-form-field>
-									<!-- DESC -->
-									<h3 class="col-md-12 my-0">{{ element.itemOrProductDescription }}</h3>
 
-									<!-- VARIATIONS -->
-									<div class="col-auto"
-										*ngFor="let variationType of element.multiVariationData?.allVariationTypes; let i = index">
-										<mat-form-field appearance="standard" style="font-size: .825rem;"
-											[ngStyle]="{ 'width': sizeInput(variationType)	}">
-											<mat-label class="input-label"
-												style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
-											<mat-select (selectionChange)="doSomething($event, element, variationType)"
-												[value]="element.multiVariationData?.currentVariations[variationType]">
-												<mat-option
-													*ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"
-													[value]="dd">
-													{{ dd  }}</mat-option>
-											</mat-select>
-										</mat-form-field>
+									<!--  -->
+									<!-- RESULT -->
+									<div class="row mt-3" style="height: 500px; overflow-y: scroll; margin-bottom: 20px;">
+										<!--  -->
+										<div class="col-12">
+											<ul class="list-group">
+												<li class="list-group-item active" style="background: #025f9e">
+													<div class="row">
+														<div class="col-3">
+															{{variationType}}
+														</div>
+														<div class="col-3 offset-4" style="color: orange;">
+															{{element.itemNumber}}
+														</div>
+													</div>
+												</li>
+												<!-- items -->
+												<li class="list-group-item" *ngFor="let item of buildDropDownsQuick(
+							sampleDataSrc1?.templateItems[targetItemNumber].multiVariationData?.variations, variationType)">
+													<div class="row">
+														<div class="col-7">
+															<div [ngStyle]="{variationType: item.sku === '556021' ? '#fff' : 'black'}">
+																{{item[variationType]}}
+															</div>
+														</div>
+														<div class="col-3" [ngStyle]="{variationType: item.sku === '556021' ? '#fff' : 'black'}">
+															{{item.sku}}
+														</div>
+
+														<div class="col-2" *ngIf="variationType === 'color'"><img
+																[src]="'https://beaconproplus.com/images/large/' + item.sku + '_default_swatch.jpg'"
+																alt=""></div>
+													</div>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
-							</td>
-						</ng-container>
+							</div>
+						</td>
+					</ng-container>
 
-						<!-- Price Column -->
-						<ng-container matColumnDef="price">
-							<th mat-header-cell *matHeaderCellDef> Price/ QTY </th>
-							<td mat-cell *matCellDef="let element">
-								<div>{{element.unitPrice | currency }} / {{element.unitOfMeasure}}</div>
-								<div>
-									<form style="text-align: center;">
-										<mat-form-field style="width: 50px">
-											<input type="number" min="1" max="999" matInput [value]="element.quantity ">
-										</mat-form-field>
-									</form>
-								</div>
-								<div style="font-size: .8rem">Availabililty for PickUp or Delivery</div>
-							</td>
-						</ng-container>
-
-						<!-- Delete Column -->
-						<ng-container matColumnDef="del">
-							<th mat-header-cell *matHeaderCellDef> </th>
-							<td mat-cell *matCellDef="let element"> <mat-icon style="color: #025f9e">delete</mat-icon>
-							</td>
-						</ng-container>
-
-						<tr mat-header-row *matHeaderRowDef="['select','product', 'details', 'price', 'del' ]"></tr>
-						<tr mat-row *matRowDef="let row; columns: ['select','product', 'details', 'price', 'del' ];">
-						</tr>
-					</table>
-				</div>
-
-
-
-				<!-- RESULT -->
-				<div class="row mt-3">
-					<!-- <div style="width: 1%"></div> -->
-					<!--  -->
-					<div class="col-6">
-						<ul class="list-group">
-							<li class="list-group-item active" style="background: #025f9e">MFG</li>
-							<li class="list-group-item" *ngFor="let item of getItemVariations(
-									sampleDataSrc1?.templateItems[1].multiVariationData?.variations, 'MFG')">
-								<!-- getItemVariations([sampleDataSrc1?.templateItems[1].multiVariationData?.variations, 'MFG')" -->
-								{{item}}
-							</li>
-
-						</ul>
-					</div>
-					<div class="col-6">
-						<ul class="list-group">
-							<li class="list-group-item active" style="background: #025f9e">COLOR: Target Sku = {{40775}}</li>
-							<!--  -->
-							<li class="list-group-item" *ngFor="let item of buildDropDownsQuick(
-								sampleDataSrc1?.templateItems[1].multiVariationData?.variations, 'color')"
-								[ngStyle]="{'background': item.sku === '40775' ? '#025f9e' : ''}">
-								<div class="row">
-									<div class="col-8">
-										<div [ngStyle]="{'color': item.sku === '40775' ? '#fff' : 'black'}">{{item.color}}</div>
-									</div>
-									<div class="col-2" [ngStyle]="{'color': item.sku === '40775' ? '#fff' : 'black'}">{{item.sku}}</div>
-									<div class="col-2"><img
-											[src]="'https://beaconproplus.com/images/large/' + item.sku + '_default_swatch.jpg'" alt=""></div>
-								</div>
-							</li>
-						</ul>
-					</div>
-
-				</div>
+					<tr mat-header-row *matHeaderRowDef="[ 'details']"></tr>
+					<tr mat-row *matRowDef="let row; columns: [ 'details'];">
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
 </div>
-
-<!-- TEMPLATES -->
-<ng-template #checkbox>
-	<div class="form-check">
-		<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" (change)="toggleShowTiles()">
-		<label class="form-check-label" for="flexCheckChecked">
-			Show tiles
-		</label>
-	</div>
-</ng-template>
-
-<ng-template #VariationUI>
-	<div style="display: inline-block">
-		<!-- MFG -->
-		<section class="row">
-
-			<!-- IMG -->
-
-			<div class="col-auto my-2">
-				<!--  <label for="">MFG: </label> -->
-				<div class="dropdown">
-					<button style="width: auto; font-size: .825rem; border: solid thin #e0dede"
-						class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						{{mfgSelLabel || mfgs[0][0]}}
-					</button>
-					<ul class="dropdown-menu">
-						<li *ngFor="let item of mfgs">
-							<a *ngIf="item.hasOwnProperty('active')" class="dropdown-item" (click)="setSkuDisplayMFG(item)"
-								style="cursor: pointer; background-color: #fff; font-size: .825rem;">{{item[0]}}
-								<span *ngFor="let imgSku of item[1]" class="tip mx-1" data-bs-toggle="tooltip" data-bs-placement="top"
-									data-bs-title="Tooltip on top">
-									<img width="18"
-										[src]="'https://static.becn.com/insecure/plain/images/large/' + imgSku + '_default_small.jpg'"
-										alt="">
-									<!--  <small class="_tip">Tip here...</small> -->
-								</span>
-							</a>
-							<a *ngIf="!item.hasOwnProperty('active')"
-								[ngStyle]="{'opacity': !item.hasOwnProperty('active') ? .25 : 1 }" class="dropdown-item"
-								(click)="setSkuDisplayMFG(item)"
-								style="cursor: pointer; background-color: #ececeb; font-size: .825rem;">
-								{{item[0]}}
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<!-- COLOR -->
-			<div class="col-auto my-2">
-				<!--  <label for="">Color: </label> -->
-				<div class="dropdown">
-					<button style="width: auto; font-size: .825rem; border: solid thin #e0dede"
-						class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						{{colSelLabel || colors[0][0] }}
-					</button>
-					<ul class="dropdown-menu">
-						<li name="colSelLabel" [(ngModel)]="colSelLabel" *ngFor="let item of colors">
-							<a class="dropdown-item" (click)="[setSkuDisplayColor(item), handleColorChange(item)]">{{item[0]}}</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-	</div>
-</ng-template>

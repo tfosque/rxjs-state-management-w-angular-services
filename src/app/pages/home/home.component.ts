@@ -17,6 +17,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./home.component.scss']
 } )
 export class HomeComponent implements OnInit {
+  targetItemNumber = 26;
 
   folders: any[] = [
     {
@@ -88,7 +89,7 @@ export class HomeComponent implements OnInit {
     private readonly productsService: ProductsService
   ) {
     console.log( 'sampleDataSrc1:Array', this.sampleDataSrc1.templateItems );
-    console.log( 'ItemDetails:438733', this.productsService.ItemDetailsResponse_p438733 );
+    // console.log( 'ItemDetails:438733', this.productsService.ItemDetailsResponse_p438733 );
   }
 
   ngOnInit(): void {
@@ -141,6 +142,11 @@ export class HomeComponent implements OnInit {
       } );
     // console.log( { tagAsMatch } );
     /* END CURR SKU DATA */
+  }
+
+  handleDropdown( val: any ) {
+    console.log( val );
+    const indx = this.sampleDataSrc1.templateItems.find( ( f: any, index: number ) => )
   }
 
   /* Custom Methods */
@@ -394,7 +400,7 @@ export class HomeComponent implements OnInit {
       return sum;
   } */
   getItemVariations( data: any, varType: any ) {
-    // console.log( { data }, { varType } );
+    // console.log( 'getItemVariations', { data }, { varType } );
     const list = data[varType];
     const KEYS = Object.keys( list );
     // 
@@ -402,7 +408,7 @@ export class HomeComponent implements OnInit {
     return KEYS.sort();
   }
   buildDropDownsQuick( data: any, varType: any ): any {
-    // console.log( { data }, { index } );
+    // console.log( 'buildDropDownsQuick', { data }, { varType } );
     const list = data[varType];
     const KEYS = Object.keys( list );
 
