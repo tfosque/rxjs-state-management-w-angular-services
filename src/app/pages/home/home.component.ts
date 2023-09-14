@@ -146,7 +146,7 @@ export class HomeComponent implements OnInit {
 
   handleDropdown( val: any ) {
     console.log( val );
-    const indx = this.sampleDataSrc1.templateItems.find( ( f: any, index: number ) => )
+    const indx = this.sampleDataSrc1.templateItems.find( ( f: any, index: number ) => { } )
   }
 
   /* Custom Methods */
