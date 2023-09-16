@@ -3,7 +3,7 @@ import { VariationColors, VariationMfg } from '../../services/variations';
 // import { FormControl } from '@angular/forms';
 import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs';
-import { currSkuData_407754, Large_Template as templateData } from './currentSkuData';
+import { currSkuData_407754, Large_Template as templateData, Large_Template_9_15_23 as latestTemplateData } from './currentSkuData';
 import { AddProductModalPilotComponent } from 'src/app/shared-components/add-product-modal-pilot/add-product-modal-pilot.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductsService } from 'src/app/services/products.service';
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     { select: 1, product: 'Tri-Build 3` Aluminum Hercules Retro Drain', price: 123.5, qty: 1, del: '' },
   ]
   /*  */
-  itemDetails_438733 = this.productsService.ItemDetailsResponse_p438733;
+  // itemDetails_438733 = this.productsService.ItemDetailsResponse_p438733;
   sampleDataSrc1: any = templateData;
   currentSkuData = currSkuData_407754;
   /*  */
@@ -88,16 +88,16 @@ export class HomeComponent implements OnInit {
     public dialogComp: MatDialog,
     private readonly productsService: ProductsService
   ) {
-    console.log( 'sampleDataSrc1:Array', this.sampleDataSrc1.templateItems );
+    // console.log( 'sampleDataSrc1:Array', this.sampleDataSrc1.templateItems );
     // console.log( 'ItemDetails:438733', this.productsService.ItemDetailsResponse_p438733 );
   }
 
   ngOnInit(): void {
     // this.initializeDropdowns();
-    console.group( 'sampleProduct' );
+    // console.group( 'sampleProduct' );
     const sampleProduct = this.sampleDataSrc1.templateItems[1];
-    console.log( { sampleProduct } )
-    console.groupEnd();
+    // console.log( { sampleProduct } )
+    // console.groupEnd();
 
     /* CUURENT SKU DATA */
     // currSku variations has shorter list of mfgs and colors but name only
@@ -115,23 +115,6 @@ export class HomeComponent implements OnInit {
     const baseVariationsMFG_Array = this.sortList( Object.entries( baseVariations.MFG ) );
     const baseVariationsCOLOR_Array = this.sortList( Object.entries( baseVariations.COLOR ) );
 
-    /* LOG */
-    /*  console.group();
-     console.log( { currSkuData_407754 } );
-     console.log( { currSkuVariations } );
-     console.log( { currSkuMFG } );
-     console.log( { currSkuCOLOR } );
-     console.log( { baseVariations } );
-     console.groupEnd(); */
-    /*  */
-    /*  console.group();
-     console.log( { sortCurrSkuMFG_simple_array } );
-     console.log( { sortCurrSkuCOLOR_simple_array } );
-     console.log( { baseVariationsMFG_Array } );
-     console.log( { baseVariationsCOLOR_Array } );
-     console.groupEnd(); */
-    /*  */
-
     // first return the matching skus from base MFG(808) and currSkuMFG(39)
     const tagAsMatch = sortCurrSkuMFG_simple_array
       .map( ( currSku: any, index: number ) => {
@@ -144,14 +127,7 @@ export class HomeComponent implements OnInit {
     /* END CURR SKU DATA */
   }
 
-  handleDropdown( val: any ) {
-    const indx = this.sampleDataSrc1.templateItems.findIndex( ( f: any ) => f.itemNumber === val );
-    this.targetItemNumber = indx;
-    // console.log( { indx } );
-  }
-
   /* Custom Methods */
-
   sizeInput( varType: string ): string {
     /* returning width
       variationType === 'packaging' ? '158px' : variationType === 'color' ? '240px' : 
@@ -408,14 +384,20 @@ export class HomeComponent implements OnInit {
     // this.buildDropDownsQuick( data, varType )
     return KEYS.sort();
   }
+  handleDropdown( val: any ) {
+    const indx = this.sampleDataSrc1.templateItems.findIndex( ( f: any ) => f.itemNumber === val );
+    this.targetItemNumber = indx;
+    // console.log( { indx } );
+  }
   buildDropDownsQuick( data: any, varType: any ): any {
     // console.log( 'buildDropDownsQuick', { data }, { varType } );
     const list = data[varType];
     const KEYS = Object.keys( list );
 
     const dataArray = Object.entries( data ).map( ( k: any ) => {
+      console.log( { k } )
       return Object.entries( k[1] ).map( ( i: any ) => {
-        // console.log( { i } )
+        console.log( { i } )
         return { [k[0]]: i[0], sku: i[1][0] }
       } )
     } )
@@ -429,6 +411,51 @@ export class HomeComponent implements OnInit {
       return _.sortBy( dataArray[0], 'color' );
     }
     // return KEYS.sort();
+    return []
+  }
+
+  buildDropDownsQuick2( data: any, varType: any ): any {
+
+    const dataArray = Object.entries( data ).map( ( k: any ) => {
+      return Object.entries( k[1] ).map( ( i: any ) => {
+        return { [k[0]]: i[0], sku: i[1][0] }
+      } )
+    } )
+    //
+    // console.log( { dataArray } );
+    // find index
+    const myIndex = dataArray.map( ( m: any, i: number ) => m[0] );
+    const pos = myIndex.findIndex( f => f[varType] );
+    // console.log( { myIndex } );
+    // console.log( { pos } )
+    //
+    if ( varType === 'MFG' ) {
+      return _.sortBy( dataArray[pos], 'MFG' )
+    }
+    if ( varType === 'length' ) {
+      return _.sortBy( dataArray[pos], 'length' )
+    }
+    if ( varType === 'color' ) {
+      return _.sortBy( dataArray[pos], 'color' );
+    }
+    if ( varType === 'packaging' ) {
+      return _.sortBy( dataArray[pos], 'packaging' );
+    }
+    if ( varType === 'size' ) {
+      return _.sortBy( dataArray[pos], 'size' );
+    }
+    if ( varType === 'width' ) {
+      return _.sortBy( dataArray[pos], 'width' );
+    }
+    if ( varType === 'thickness' ) {
+      return _.sortBy( dataArray[pos], 'thickness' );
+    }
+    if ( varType === 'diameter' ) {
+      return _.sortBy( dataArray[pos], 'diameter' );
+    }
+    if ( varType === 'dimensions' ) {
+      return _.sortBy( dataArray[pos], 'dimensions' );
+    }
     return []
   }
 

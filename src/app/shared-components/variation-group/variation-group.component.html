@@ -1,0 +1,31 @@
+<!-- Variation Group -->
+<div class="row">
+	<!--  -->
+	<div class="col-1" style="text-align: center">
+		<img width="100%" style="padding-top: 15px;"
+			[src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
+			[alt]="element.itemNumber">
+		<div>#{{element.itemNumber}}</div>
+	</div>
+	<!--  -->
+	<div class="col-md-9 mt-3 mb-0">
+		<h3 style="padding-left: 0; font-size: 1.1rem;">
+			{{ element.itemOrProductDescription }}
+		</h3>
+		<div class="row">
+			<!-- Variation Item -->
+			<div class="col-3" *ngFor="let variationType of element.multiVariationData?.allVariationTypes; let i = index">
+				<mat-form-field appearance="standard" style="font-size: .825rem;" [ngStyle]="{ 'width': '230px'	}">
+					<mat-label class="input-label" style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
+					<mat-select (selectionChange)="doSomething($event, element, variationType)"
+						[value]="element.multiVariationData?.currentVariations[variationType]" style="font-size: 1.1rem">
+						<mat-option *ngFor="let dd of getItemVariations(element.multiVariationData?.variations, variationType)"
+							[value]="dd">
+							{{ dd  }}</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<!--  -->
+			</div>
+		</div>
+	</div>
+</div>

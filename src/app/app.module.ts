@@ -29,8 +29,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ImgErrDirective } from './directives/img-err.directive';
 import { SelectedDetailViewComponent } from './shared-components/selected-detail-view/selected-detail-view.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { VariationGroupComponent } from './shared-components/variation-group/variation-group.component';
+import { VariationItemComponent } from './shared-components/variation-group/variation-item/variation-item.component';
+import { TemplateDetailsComponent } from './pages/template-details/template-details.component';
 @NgModule( {
-  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective, SelectedDetailViewComponent],
+  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective, SelectedDetailViewComponent, VariationGroupComponent, VariationItemComponent, TemplateDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

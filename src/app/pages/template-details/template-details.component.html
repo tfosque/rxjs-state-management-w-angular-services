@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="mb-2"
+        style="font-size: 2em; color: #025f9e; font-size: 2.25em; font-weight: bold; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
+        Variations Exercise:</h1>
+    </div>
+    <!--  -->
+    <div class="col-12"> <mat-divider></mat-divider></div>
+    <!-- Sku Selector -->
+    <div class="col-3 p-3 pb-0 pt-3">
+      <mat-form-field appearance="fill">
+        <mat-label> Available Skus</mat-label>
+        <mat-select #sel id="sel" [value]="targetSku" (selectionChange)="handleDropdown(sel.value)">
+          <mat-option *ngFor="let i of templateSkus" [value]="i.itemNumber">
+            {{i.itemNumber}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!--  -->
+  </div>
+  <!--  -->
+  <div class="row" *ngFor="let element of templateSkus">
+    <app-variation-group [element]="element"></app-variation-group>
+  </div>
+</div>

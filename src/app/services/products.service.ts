@@ -19,7 +19,7 @@ export class ProductsService {
   public ItemDetailsResponse_p438733 = ItemDetailsResponse_438733;
 
   constructor() {
-    console.log( ItemDetailsResponse_438733 );
+    //  console.log( ItemDetailsResponse_438733 );
   }
 
   public getSampleProducts() {
