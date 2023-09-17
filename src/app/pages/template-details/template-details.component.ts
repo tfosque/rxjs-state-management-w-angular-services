@@ -46,7 +46,8 @@ export class TemplateDetailsComponent implements OnInit {
     this.accountName = this.sampleTemplates[0].accountName;
     this.accountId = this.sampleTemplates[0].accountLegacyId;
     //
-    this.variationService.setAccount( this.accountName, this.accountId )
+    this.variationService.setAccount( this.accountName, this.accountId );
+    this.router.navigate( ['/account/templates/', this.targetTemplateId] )
   }
   handleTemplateSelect( val: any ) {
     console.log( { val } );
@@ -54,6 +55,7 @@ export class TemplateDetailsComponent implements OnInit {
     const newTemplate = this.sampleTemplates.find( ( template: any ) => template.templateId === val );
     this.targetTemplateId = newTemplate.templateId;
     this.templateSkus = newTemplate.templateItems;
+    this.router.navigate( ['/account/templates/', this.targetTemplateId] )
   }
 
   handleTemplateClick( element: any ) {

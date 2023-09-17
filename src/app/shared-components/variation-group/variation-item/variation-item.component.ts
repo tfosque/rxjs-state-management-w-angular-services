@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 } )
 export class VariationItemComponent implements OnInit {
   @Input() variationType = '';
-  @Input() element: any = {}
+  @Input() element: any = {};
 
 
   constructor() { }

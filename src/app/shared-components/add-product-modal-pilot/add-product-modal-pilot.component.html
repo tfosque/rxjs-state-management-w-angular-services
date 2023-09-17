@@ -41,8 +41,8 @@
           <mat-card class="col-md-3 my-2 mx-1" style="width: 11.75vw; cursor: pointer" (click)="selectProduct(item)">
             <mat-card-content>
               <div>{{item.brand}}</div>
-              <img appImgErr [fallbackIMgSrc]="item.productOnErrorImage" mat-card-image
-                [src]="baseImgUrl + item.productImage" [alt]="item.productId" class="img-fluid">
+              <img appImgErr mat-card-image [src]="baseImgUrl + item.productImage" [alt]="item.productId"
+                class="img-fluid">
               <p [innerHtml]="item.productName"></p>
             </mat-card-content>
             <div>{{item.productId}}</div>

@@ -1,24 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-1 mb-3"><button mat-raised-button color="primary">Back</button></div>
+    <div class="col-12">
+      <h4>{{account.accountName}} - {{account.accountId}}</h4>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-11">
-      <h4>{{account.accountName}} - {{account.accountId}}</h4>
+    <div class="col-1 mb-3">
+      <button mat-raised-button color="primary" routerLink="/account/templates">
+        <mat-icon>arrow_back</mat-icon>Templates</button>
     </div>
+
     <mat-divider></mat-divider>
 
     <div class="col-1 mt-3">
-      <img src="https://beaconproplus.com/images/large/735300_default_thumb.jpg" style="width: 80px;" alt="">
+      <img [src]="'https://beaconproplus.com' + details.imageUrl.thumbnail" style="width: 80px;" alt="">
       <div>#{{details?.itemNumber}}</div>
     </div>
+    <!--  -->
     <div class="col-11 mt-3">
       <div class="row">
         <div class="col-12">Nickname: {{details?.nickName}}</div>
         <div class="col-12">{{details?.itemOrProductDescription}}</div>
-        <div class="col-4" *ngFor="let item of ['big', 'small']">
-          <app-variation-group></app-variation-group>
+        <div class="col-4">
+          <app-variation-group [element]="details.multiVariationData"></app-variation-group>
         </div>
       </div>
     </div>

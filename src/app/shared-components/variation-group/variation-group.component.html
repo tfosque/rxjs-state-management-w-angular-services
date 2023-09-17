@@ -1,6 +1,6 @@
 <!-- Variation Item -->
 <div class="row">
-	<div class="col-3" *ngFor="let variationType of element.multiVariationData?.allVariationTypes; let i = index">
+	<div class="col-6" *ngFor="let variationType of element?.allVariationTypes; let i = index">
 		<app-variation-item [element]="element" [variationType]="variationType"></app-variation-item>
 	</div>
 </div>

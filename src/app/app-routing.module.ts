@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'account/template/:id', component: HomeComponent },
   { path: 'account/templates', component: TemplateDetailsComponent },
+  { path: 'account/templates/:templateId', component: TemplateDetailsComponent },
   { path: 'account/templates-detail-page/:itemNumber/:templateId', component: TemplatesDetailPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent },
