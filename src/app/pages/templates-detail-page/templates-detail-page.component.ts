@@ -9,7 +9,7 @@ import { VariationService } from 'src/app/services/variations/variation.service'
 } )
 export class TemplatesDetailPageComponent implements OnInit {
   details: any = {};
-  template: any = {};
+  account: any = {};
 
   constructor(
     private readonly variationService: VariationService,
@@ -17,7 +17,7 @@ export class TemplatesDetailPageComponent implements OnInit {
     private readonly route: ActivatedRoute
   ) {
     const state = this.router.getCurrentNavigation()?.extras.state;
-    console.log( { state } )
+    console.log( { state } );
   }
 
   ngOnInit(): void {
@@ -26,17 +26,21 @@ export class TemplatesDetailPageComponent implements OnInit {
     const templates = this.variationService.sampleTemplates;
 
     this.route.paramMap.subscribe( ( r: any ) => {
-      // console.log( { r } );
+      console.log( { r } );
       // fetch template // r.params.itemNumber, .templateId
       const templateSelected = templates.find( ( f: any ) => f.templateId === r.params.templateId );
-      // console.log( { templateSelected } );
+      console.log( { templateSelected } );
       // console.log( 'param:', r.params.itemNumber )
       const selection = templateSelected.templateItems.find( ( f: any ) => f.itemNumber === r.params.itemNumber );
       console.log( { selection } );
       //
       this.details = selection;
       console.log( 'details', this.details );
+      //
+      this.account = { accountName: templateSelected.accountName, accountId: templateSelected.accountLegacyId };
     } )
+    //
+
   }
 
 }

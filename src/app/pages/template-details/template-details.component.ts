@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Large_Template_9_15_23 as templateData } from './currentSkuData';
+// import { Large_Template_9_15_23 as templateData } from './currentSkuData';
 import { Templates } from './templates-data';
 import { VariationService } from 'src/app/services/variations/variation.service';
 import { ActivatedRoute, Router, TitleStrategy } from '@angular/router';
@@ -15,6 +15,7 @@ export class TemplateDetailsComponent implements OnInit {
   templateSkus: any = [];
   targetTemplateId = '';
   accountName = '';
+  accountId = '';
 
   constructor(
     private readonly variationService: VariationService,
@@ -27,19 +28,25 @@ export class TemplateDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.initializeTemplates();
     this.initializeDropdownSkus();
+    console.log( 'this', this )
+    console.log( 'sampleTemplates', this.sampleTemplates );
+    console.log( 'sampleDataSrc', this.sampleDataSrc[0].templateItems );
+    // console.log('sampleDataSrc', this.sampleDataSrc)
   }
 
   initializeTemplates() {
     this.sampleTemplates = Templates;
-    this.variationService.sampleTemplates = Templates; // targeted
-    console.log( this.sampleTemplates )
+    this.variationService.sampleTemplates = Templates; // targeted    
   }
 
   initializeDropdownSkus() {
-    this.sampleDataSrc = templateData;
-    this.templateSkus = this.sampleDataSrc.templateItems;
+    this.sampleDataSrc = this.sampleTemplates[0].templateItems;
+    this.templateSkus = this.sampleDataSrc;
     this.targetTemplateId = this.sampleTemplates[0].templateId;
     this.accountName = this.sampleTemplates[0].accountName;
+    this.accountId = this.sampleTemplates[0].accountLegacyId;
+    //
+    this.variationService.setAccount( this.accountName, this.accountId )
   }
   handleTemplateSelect( val: any ) {
     console.log( { val } );
@@ -50,7 +57,10 @@ export class TemplateDetailsComponent implements OnInit {
   }
 
   handleTemplateClick( element: any ) {
+    console.group( 'handleTemplateClick' );
+    console.log( 'targetTempId', this.targetTemplateId )
     console.log( { element } );
+    console.groupEnd();
     // set element
     this.variationService.setVariationDetails( element );
     this.router.navigate( ['/account/templates-detail-page', element.itemNumber, this.targetTemplateId],

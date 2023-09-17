@@ -28,8 +28,7 @@
 
     <div class="col-1" style="text-align: center">
       <img width="100%" style="padding-top: 15px;"
-        [src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
-        [alt]="element.itemNumber">
+        [src]="'https://static.becn.com/insecure/plain' + element.imageUrl.thumbnail" [alt]="element.itemNumber">
       <div>#{{element.itemNumber}}</div>
     </div>
 

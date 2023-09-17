@@ -10,6 +10,7 @@ import * as _ from 'lodash';
 export class VariationService {
   variationDetails: any = {}
   sampleTemplates: any = [];
+  account: any = {};
 
   constructor() {
     this.sampleTemplates = Templates;
@@ -17,6 +18,9 @@ export class VariationService {
 
   setVariationDetails( element: any ) {
     this.variationDetails = element;
+  }
+  setAccount( accountName: string, accountId: string ) {
+    this.account = { accountName, accountId };
   }
 
   getItemVariations( data: any, varType: any ) {
