@@ -5,12 +5,14 @@ import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CartComponent } from './cart/cart/cart.component';
 import { TemplateDetailsComponent } from './pages/template-details/template-details.component';
+import { TemplatesDetailPageComponent } from './pages/templates-detail-page/templates-detail-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'account/template/:id', component: HomeComponent },
-  { path: 'account/variation/:id', component: TemplateDetailsComponent },
+  { path: 'account/templates/:id', component: TemplateDetailsComponent },
+  { path: 'account/templates-detail-page/:itemNumber/:templateId', component: TemplatesDetailPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent },
   { path: 'error', component: ErrorComponent },

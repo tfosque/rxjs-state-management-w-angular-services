@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Large_Template_9_15_23 as templateData } from './currentSkuData';
+import { Templates } from '../../pages/template-details/templates-data';
 
 import * as _ from 'lodash';
 
@@ -6,8 +8,16 @@ import * as _ from 'lodash';
   providedIn: 'root'
 } )
 export class VariationService {
+  variationDetails: any = {}
+  sampleTemplates: any = [];
 
-  constructor() { }
+  constructor() {
+    this.sampleTemplates = Templates;
+  }
+
+  setVariationDetails( element: any ) {
+    this.variationDetails = element;
+  }
 
   getItemVariations( data: any, varType: any ) {
     const list = data[varType];

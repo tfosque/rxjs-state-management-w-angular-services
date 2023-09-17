@@ -6,11 +6,20 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./variation-item.component.scss']
 } )
 export class VariationItemComponent implements OnInit {
-  @Input() variationItem: any = {}
+  @Input() variationType = '';
+  @Input() element: any = {}
+
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+  getItemVariations( element: any, varType: string ) {
+    // console.log( { element, varType } );
+    const list = element[varType];
+    const KEYS = Object.keys( list );
+    // 
+    return KEYS.sort();
   }
+  doSomething() { }
 
 }

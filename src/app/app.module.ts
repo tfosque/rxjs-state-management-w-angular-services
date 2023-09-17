@@ -1,5 +1,5 @@
 import { MenuModule } from './menu/menu.module';
-import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -32,8 +32,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { VariationGroupComponent } from './shared-components/variation-group/variation-group.component';
 import { VariationItemComponent } from './shared-components/variation-group/variation-item/variation-item.component';
 import { TemplateDetailsComponent } from './pages/template-details/template-details.component';
+import { TemplatesDetailPageComponent } from './pages/templates-detail-page/templates-detail-page.component';
 @NgModule( {
-  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective, SelectedDetailViewComponent, VariationGroupComponent, VariationItemComponent, TemplateDetailsComponent],
+  declarations: [AppComponent, HomeComponent, ErrorComponent, LoginComponent, AddProductModalPilotComponent, ImgErrDirective, SelectedDetailViewComponent, VariationGroupComponent, VariationItemComponent, TemplateDetailsComponent, TemplatesDetailPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,7 +56,7 @@ import { TemplateDetailsComponent } from './pages/template-details/template-deta
     MatChipsModule,
     MatPaginatorModule
   ],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
 } )

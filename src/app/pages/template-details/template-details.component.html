@@ -9,19 +9,39 @@
     <div class="col-12"> <mat-divider></mat-divider></div>
     <!-- Sku Selector -->
     <div class="col-3 p-3 pb-0 pt-3">
-      <mat-form-field appearance="fill">
-        <mat-label> Available Skus</mat-label>
-        <mat-select #sel id="sel" [value]="targetSku" (selectionChange)="handleDropdown(sel.value)">
-          <mat-option *ngFor="let i of templateSkus" [value]="i.itemNumber">
-            {{i.itemNumber}}
+      <mat-form-field appearance="fill" style="width: 375px;">
+        <mat-label> {{accountName}} - {{targetTemplateId}}</mat-label>
+        <mat-select #sel id="sel" [value]="targetTemplateId" (selectionChange)="handleTemplateSelect(sel.value)">
+          <mat-option *ngFor="let i of sampleTemplates" [value]="i.templateId">
+            {{i.templateName}}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <!--  -->
   </div>
-  <!--  -->
+  <!-- Template Line Items -->
   <div class="row" *ngFor="let element of templateSkus">
-    <app-variation-group [element]="element"></app-variation-group>
+    <div class="col-1" style="padding-top: 34px;">
+      <button mat-stroked-button style="color:#025f9e" (click)="handleTemplateClick(element)">Analyze</button>
+    </div>
+
+    <div class="col-1" style="text-align: center">
+      <img width="100%" style="padding-top: 15px;"
+        [src]="'https://static.becn.com/insecure/plain/images/large/' + element.itemNumber + '_default_small.jpg'"
+        [alt]="element.itemNumber">
+      <div>#{{element.itemNumber}}</div>
+    </div>
+
+    <div class="col-md-10 mt-3 mb-0">
+      <h3 style="padding-left: 0; font-size: 1.1rem;">
+        {{ element.itemOrProductDescription }}
+      </h3>
+      <!--  -->
+      <div class="row">
+        <app-variation-group [element]="element"></app-variation-group>
+      </div>
+    </div>
+
   </div>
 </div>
