@@ -55,20 +55,20 @@ export class VariationService {
   }
 
   buildDropDownsQuick2( data: any, varType: any ): any {
+    // console.log( { data } );
 
-    const dataArray = Object.entries( data ).map( ( k: any ) => {
+    const dataArray = Object.entries( data.variations ).map( ( k: any ) => {
       return Object.entries( k[1] ).map( ( i: any ) => {
         return { [k[0]]: i[0], sku: i[1][0] }
       } )
     } )
-    //
-    console.log( { dataArray } );
+
     // find index
     const myIndex = dataArray.map( ( m: any, i: number ) => m[0] );
     const pos = myIndex.findIndex( f => f[varType] );
     // console.log( { myIndex } );
     // console.log( { pos } )
-    //
+    // console.log( _.sortBy( dataArray[pos], varType ) );
     if ( varType === 'MFG' ) {
       return _.sortBy( dataArray[pos], 'MFG' )
     }

@@ -1,9 +1,15 @@
-<mat-form-field appearance="standard" style="font-size: .825rem;">
+<mat-form-field appearance="standard" style="font-size: .825rem; width: 310px;">
   <mat-label class="input-label" style="padding: 0px; color: #a6a6a6;">{{ variationType }}</mat-label>
-  <mat-select (selectionChange)="doSomething()" [value]="element?.currentVariations[variationType]"
-    style="font-size: 1.1rem">
-    <mat-option *ngFor="let dropdownItem of getItemVariations(element?.variations, variationType)"
-      [value]="dropdownItem">
-      {{ dropdownItem }}</mat-option>
+  <mat-select (selectionChange)="doSomething()" [value]="defaultSkuId" style="font-size: 1.1rem">
+
+    <mat-option [value]="item.sku" *ngFor="let item of dropdownItems">
+      {{ item[variationType] }}
+    </mat-option>
   </mat-select>
 </mat-form-field>
+
+<div class="list-group">
+  <div class="list-group-item" [ngClass]="{'active': defaultSkuId === item.sku}" *ngFor="let item of dropdownItems">
+    {{ item[variationType] }} | {{ item.sku}}
+  </div>
+</div>
