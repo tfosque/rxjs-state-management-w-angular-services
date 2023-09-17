@@ -13,15 +13,15 @@
 
     <mat-divider></mat-divider>
 
-    <div class="col-1 mt-3">
+    <div class="col-1 mt-3" style="text-align: center;">
       <img [src]="'https://beaconproplus.com' + details.imageUrl.thumbnail" style="width: 80px;" alt="">
       <div>#{{details?.itemNumber}}</div>
     </div>
     <!--  -->
     <div class="col-11 mt-3">
       <div class="row">
-        <div class="col-12">Nickname: {{details?.nickName}}</div>
-        <div class="col-12">{{details?.itemOrProductDescription}}</div>
+        <div class="col-12" style="color: lightgrey">Nickname: {{details?.nickName}}</div>
+        <div class="col-12" style="color: #025f9e; font-size: 1rem;">{{details?.itemOrProductDescription}}</div>
         <div class="col-4">
           <app-variation-group [element]="details.multiVariationData"></app-variation-group>
         </div>
