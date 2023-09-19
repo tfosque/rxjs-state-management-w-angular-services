@@ -28,12 +28,13 @@
 
     <div class="col-1" style="text-align: center">
       <img width="100%" style="padding-top: 15px;"
-        [src]="'https://static.becn.com/insecure/plain' + element.imageUrl.thumbnail" [alt]="element.itemNumber">
+        [src]="'https://beaconproplus.com/images/large/' + element.itemNumber + '_default_small.jpg'"
+        [alt]="element.itemNumber">
       <div>#{{element.itemNumber}}</div>
     </div>
 
     <div class="col-md-10 mt-3 mb-0">
-      <h3 style="padding-left: 0; font-size: 1.1rem;">
+      <h3 style="padding-left: 0; font-size: 1.1rem;">`1
         {{ element.itemOrProductDescription }}
       </h3>
       <!--  -->
